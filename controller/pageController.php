@@ -26,8 +26,8 @@
             $this->view->showHomeLocation();
         }
         
-        function deleteProduct($id){
-            $this->model->deleteProductFromDB($id);
+        function deleteProduct(){
+            $this->model->deleteProductFromDB($_POST['id']);
             $this->view->showHomeLocation();
         }
 
@@ -37,7 +37,7 @@
             }else{
                 $gluten = 1;
             }
-            $this->model->updateProductFromDB($_POST['id'], $_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria']);
+            $this->model->updateProductFromDB($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria'], $_POST['id']);
             $this->view->showHomeLocation();
         }
     }

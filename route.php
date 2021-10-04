@@ -25,7 +25,7 @@
       $pageController->createProduct();
     break;
     case 'deleteProduct':
-      $pageController->deleteProduct($params[1]);
+      $pageController->deleteProduct();
     break;
     case 'updateProduct':
       $pageController->updateProduct();

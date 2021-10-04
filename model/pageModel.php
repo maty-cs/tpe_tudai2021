@@ -22,9 +22,9 @@
             $sentencia->execute(array($id));
         }
 
-        function updateProductFromDB($id, $nombre, $gluten, $precio, $categoria){
-            $sentencia = $this->db->prepare("UPDATE `productos` SET `id_product`='[$id]',`nombre`='nombre',`gluten`='gluten',`precio`='precio',`categoria`='categoria' WHERE id_product=id");
-            $sentencia->execute(array($id, $nombre, $gluten, $precio, $categoria));
+        function updateProductFromDB($nombre, $gluten, $precio, $categoria, $id){
+            $sentencia = $this->db->prepare("UPDATE  productos  SET  nombre = ?, gluten = ?, precio = ?, categoria = ? WHERE id_product=?");
+            $sentencia->execute(array($nombre, $gluten, $precio, $categoria, $id));
         }
 
     }
