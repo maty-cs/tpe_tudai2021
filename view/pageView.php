@@ -9,8 +9,9 @@
             //$this->smarty->compileAllTemplates('.tpl',true);
         }
 
-        function printPage($products){
+        function printPage($products, $categorias){
             $this->smarty->assign('products', $products);
+            $this->smarty->assign('categorias', $categorias);
             $this->smarty->display('./templates/bodyProductos.tpl');
         }
 

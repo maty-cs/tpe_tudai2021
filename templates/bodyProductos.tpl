@@ -79,12 +79,16 @@
 </form>
 
 
-
-<section class="seccionFiltro">
-    <label for="filtrar">Filtro</label>
-    <input type="text" placeholder="Filtrar resultados" id="filtro">
-    <button id="btnFiltrar">Filtrar</button>
-</section>
+<form action="filtrarResultados" method="post" class="seccionFiltro">
+    <label for="categorias">Filtrar por Categoria</label>
+    <select name="categorias" id="filtro">
+        <option value="Todas">---</option>
+        {foreach from=$categorias item=$categoria}
+            <option value="{$categoria->categoria}">{$categoria->categoria}</option>
+        {/foreach}
+    </select>
+    <button type="submit" id="btnFiltrar">Filtrar</button>
+</form>
 
 <section class="tablaProductos">
     <table>
@@ -105,8 +109,8 @@
                         <td>
                         {if $product->gluten}
                             Sí
-                            {else}
-                                No
+                        {else}
+                            No
                         {/if}
                         </td>
                         <td>${$product->precio}</td> <tr>  

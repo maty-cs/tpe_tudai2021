@@ -29,6 +29,9 @@
     break;
     case 'updateProduct':
       $pageController->updateProduct();
+    break;
+    case 'filtrarResultados':
+      $pageController->filtroProductos();
     default:
         echo("404 Page Not Found");
     break;

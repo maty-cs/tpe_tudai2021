@@ -11,8 +11,10 @@
         }
 
         function showPage(){
-            $products = $this->model->getProducts();    
-            $this->view->printPage($products);
+            $defaultCategoria = 'Todas';
+            $products = $this->model->getProducts($defaultCategoria);
+            $categorias = $this->model->getCategorias();
+            $this->view->printPage($products, $categorias);
             //$this->view->showHomeLocation();
         }
 
@@ -39,5 +41,11 @@
             }
             $this->model->updateProductFromDB($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria'], $_POST['id']);
             $this->view->showHomeLocation();
+        }
+
+        function filtroProductos(){
+            $products = $this->model->getProducts($_POST['categorias']);
+            $categorias = $this->model->getCategorias();
+            $this->view->printPage($products, $categorias);
         }
     }
