@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+
+    RewriteRule \.(?:css|js|jpe?g|gif|png)$ - [L]
+    RewriteRule ^(.*)$ route.php?action=$1 [QSA,L]
+</IfModule>
+
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType text/css "access plus 1 minute"
+	ExpiresByType image/gif "access plus 1 month"
+	ExpiresByType image/png "access plus 1 month"
+	ExpiresByType image/jpeg "access plus 1 month"
+	ExpiresByType application/x-javascript "access plus 1 month"
+	ExpiresByType application/javascript "access plus 1 week"
+	ExpiresByType application/x-icon "access plus 1 year"
+	ExpiresDefault "access plus 10 days"
+</IfModule>

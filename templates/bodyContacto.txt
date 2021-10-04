@@ -1,0 +1,28 @@
+{include file="../templates/header-nav.tpl"}
+
+<section class="formulario">
+    <h2 class="subtitulo">Dejanos un comentario</h2>
+    <div class="contenedor-formulario">
+        <form class="form" id="formContacto">
+            <input type="text" name="nombre" class="control" id="nombre" placeholder="Ingrese su nombre" required> 
+            <input type="text" name="apellido" class="control" id="apellido" placeholder="Ingrese su apellido" required> 
+            <input type="email" name="mail" class="control" id="mail" placeholder="Ingrese su e-mail" required> 
+            <input type="password" name="pass" class="control" id="pass" placeholder="Ingrese su contraseña" required> 
+            <input type="tel" id="tel" name="tel" class="control" placeholder="Ingrese teléfono">
+            
+            <textarea name="comentario" class="control" id="comentario" cols="30" rows="10" placeholder="Ingrese su comentario"></textarea>
+            <div id="contenedorCaptcha" action="">
+                <label class="texto-captcha" for="captcha">Ingrese el resultado de <span id="valor1"></span> + <span id="valor2"></span></label>
+                <input type="text" id="suma" placeholder="validar identidad">
+                <input id="send" type="button" value="Confirmar">
+            </div>
+            <div id="resultado"></div>
+            <button class="btn-enviar">Enviar</button>
+        </form>
+        <div class="img-formulario">
+            <img src="./img/Sending emails_Flatline.svg" alt="">
+        </div>
+    </div>
+</section>
+
+{include file="../templates/footer.tpl"}

@@ -1,0 +1,253 @@
+"use strict"
+
+//--------------------Tabla----------------------//
+
+/*
+async function cargarTabla(){
+    let conteinerTabla = document.querySelector("#agregado");
+    conteinerTabla.innerHTML=' ';
+
+    try {
+        let response = await fetch(`https://60cb81a121337e0017e44eff.mockapi.io/api/productos`);
+        let json = await response.json();
+        
+        for (const item of json) {
+            itemId = Number(item.id);
+            
+            let tabla =`<td>${itemId}</td>
+                        <td>${item.nombre}</td>
+                        <td>${item.gluten}</td>
+                        <td>$${item.precio}</td>`
+            ;  
+
+            if(Number(item.precio) < 400){
+                conteinerTabla.innerHTML += 
+                `<tr class="conDescuento">
+                ${tabla}
+                </tr>` 
+            }
+            else{
+                conteinerTabla.innerHTML += 
+                `<tr>
+                ${tabla}
+                </tr>` 
+            }
+        }
+
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+
+    document.querySelector("#btnFiltrar").addEventListener("click", filtrar);
+}
+
+async function agregarProducto(){
+    let nombreProducto = document.querySelector("#nombreProducto").value;
+    let valor = document.querySelector("#agregarPrecio").value;
+    let glutenCheck;
+        
+    if (document.querySelector("#contieneGluten").checked == true) {
+        glutenCheck = "Sí";
+    }
+    else {
+        glutenCheck = "No";
+    }
+
+    let item = {
+        nombre: nombreProducto,
+        gluten: glutenCheck,
+        precio: valor
+    }
+
+    try {
+        let response = await fetch(`https://60cb81a121337e0017e44eff.mockapi.io/api/productos`, {
+            "method": "POST",
+            "headers": {"Content-type": "application/json"},
+            "body": JSON.stringify(item)
+        });
+        console.log(item);
+        if(response.ok){
+            console.log("item creado ");
+            cargarTabla();
+        }
+        else{
+            console.log("error al crear item");
+        }
+
+    }
+    catch (error) {
+     console.log(error);
+    }
+}
+
+async function borrarUltimo(){
+    try {
+        let response = await fetch(`https://60cb81a121337e0017e44eff.mockapi.io/api/productos/${itemId}`, {
+            "method": "DELETE"
+        });
+        if(response.ok){
+            console.log("item eliminado");
+            cargarTabla();
+        }
+        else{
+            console.log("error al eliminar item");
+        }
+    }
+    catch (error) {
+     console.log(error);
+    }
+}
+
+async function editar(){
+
+    if (idModificar != '' && idModificar != ' ') {        
+        if (document.querySelector("#contieneGluten").checked == true) {
+            glutenCheck = "Sí";
+        }
+        else {
+            glutenCheck = "No";
+        }
+    
+        let item = {
+            nombre: nombreProducto,
+            gluten: glutenCheck,
+            precio: valor
+        }
+        try {
+            let response = await fetch(`https://60cb81a121337e0017e44eff.mockapi.io/api/productos/${idModificar}`, {
+                "method": "PUT",
+                "headers": {"Content-type": "application/json"},
+                "body": JSON.stringify(item)
+            });
+            console.log(item);
+            if(response.ok){
+                console.log("item modificado");
+                cargarTabla();
+            
+            }
+            else{
+                console.log("error al modificar item");
+            }
+    
+        }
+        catch (error) {
+         console.log(error);
+        }
+    }
+    else{
+        alert("Ingrese un ID para modificar");
+    }
+}
+
+
+//------------------Filtrar--------------------//
+
+async function filtrar() {
+    console.log("en ejecución");
+
+    let contenedor = document.querySelector("#agregado");
+
+    try {
+        let response = await fetch(`https://60cb81a121337e0017e44eff.mockapi.io/api/productos`);
+        let json = await response.json();
+
+        let texto = document.querySelector("#filtro").value.toLowerCase();
+
+        if(texto !== '' && texto !== ' '){            
+            for (const item of json) {
+
+                let tabla =`<td>${item.id}</td>
+                            <td>${item.nombre}</td>
+                            <td>${item.gluten}</td>
+                            <td>$${item.precio}</td>`
+                ;   
+                
+                let nombre = item.nombre.toLowerCase();
+                if(nombre.indexOf(texto) !== -1){
+                    contenedor.innerHTML= '';
+    
+                    if(Number(item.precio) < 400){
+                        contenedor.innerHTML += 
+                        `<tr class="conDescuento">
+                        ${tabla}
+                        </tr>` 
+                    }
+    
+                    else{
+                        contenedor.innerHTML += 
+                        `<tr>
+                        ${tabla}
+                        </tr>` 
+                    }  
+                }
+            }
+        }
+        else{
+            console.log("campo de filtración vacío");
+            cargarTabla();
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+*/
+
+//------------------Captcha--------------------//
+
+let numero1 = Math.floor(Math.random() * (10 - 0)) + 0;
+let numero2 = Math.floor(Math.random() * (10 - 1)) + 1;
+let resultado = numero1 + numero2;
+
+function cargarCaptcha(){
+
+    let primerValor = document.getElementById("valor1");
+    primerValor.innerHTML = numero1;
+    console.log("variable1 cargada en innerHTML");
+
+    let segundoValor = document.getElementById("valor2");
+    segundoValor.innerHTML = numero2;
+    console.log("variable2 cargada en innerHTML");
+
+    let botonConfirmar = document.getElementById("send");
+    botonConfirmar.addEventListener("click", captcha);
+    console.log("activado");
+
+
+    let form = document.querySelector("#formContacto").addEventListener("submit", function(e){
+    e.preventDefault();
+    
+    let formData = new FormData(form);
+    
+    let nombre = formData.get('nombre');
+    let apellido = formData.get('apellido');
+    let email = formData.get('mail');
+    let pass = formData.get('pass');
+    
+    console.log(nombre, apellido, email, pass, " ingresado en el servidor");
+    });
+
+}
+
+function captcha(){    
+    let valorInput = document.getElementById("suma").value;
+    let respuesta = document.getElementById("resultado");
+
+    if (valorInput == resultado){
+        respuesta.innerHTML = "Confirmación enviada!";
+        console.log("código correcto");
+    }
+    else if (valorInput != resultado && valorInput != ""){
+        respuesta.innerHTML = "Código erróneo, vuelva a intentar";
+        console.log("código erróneo");
+    }
+    else{
+        respuesta.innerHTML = "Ingrese un código";
+        console.log("Código no ingresado");
+    }
+}
