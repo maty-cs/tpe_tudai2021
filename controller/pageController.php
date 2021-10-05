@@ -1,24 +1,31 @@
 <?php
     require_once('./model/pageModel.php');
     require_once('./view/pageView.php');
+    require_once('./helpers/authHelper.php');
 
     class pageController{
         private $model;
         private $view;
+        private $authHelper;
+
         function __construct(){
             $this->model= new pageModel();
             $this->view = new pageView();
+            $this->authHelper = new authHelper();
         }
 
         function showPage(){
+            $this->authHelper->checkSession();
+
             $defaultCategoria = 'Todas';
             $products = $this->model->getProducts($defaultCategoria);
             $categorias = $this->model->getCategorias();
             $this->view->printPage($products, $categorias);
-            //$this->view->showHomeLocation();
         }
 
         function createProduct(){
+            $this->authHelper->checkSession();
+
             if(!isset($_POST['gluten'])){
                 $gluten = 0;
             }else{
@@ -29,11 +36,15 @@
         }
         
         function deleteProduct(){
+            $this->authHelper->checkSession();
+
             $this->model->deleteProductFromDB($_POST['id']);
             $this->view->showHomeLocation();
         }
 
         function updateProduct(){
+            $this->authHelper->checkSession();
+
             if(!isset($_POST['gluten'])){
                 $gluten = 0;
             }else{
@@ -44,6 +55,8 @@
         }
 
         function filtroProductos(){
+            $this->authHelper->checkSession();
+
             $products = $this->model->getProducts($_POST['categorias']);
             $categorias = $this->model->getCategorias();
             $this->view->printPage($products, $categorias);

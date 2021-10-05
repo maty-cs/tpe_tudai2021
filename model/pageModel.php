@@ -17,7 +17,7 @@
                     $sentencia = $this->db->prepare("SELECT * FROM `productos` WHERE `categoria`='Postres'");
                 break;
                 default:
-                    $sentencia = $this->db->prepare( "SELECT * FROM productos");
+                    echo ("Error al cargar productis de la base de datos SQL");
                 break;
             }
             $sentencia->execute();
