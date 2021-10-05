@@ -9,6 +9,7 @@
             switch($categoria){
                 case 'Todas':
                     $sentencia = $this->db->prepare( "SELECT * FROM productos");
+                break;
                 case 'Tortas':
                     $sentencia = $this->db->prepare("SELECT * FROM `productos` WHERE `categoria`='Tortas'");
                 break;

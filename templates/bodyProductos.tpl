@@ -133,10 +133,10 @@
                 <p>Los pedidos están disponibles para toda la zona sur de la Provincia de Buenos Aires.</p>
                 <p>Su pedido tardará en llegar al destino dependiendo la lejanía a la sucursal.</p>
                 <h3>Precauciones</h3>
-                <p >El envío se realizará con las Precaucionesnecesarias debido a la pandemia que se está atravezando</p>
+                <p >El envío se realizará con las precauciones necesarias debido a la pandemia que se está atravesando</p>
             </div>
             <ol>
-                <li>Se realizan entregas sin contacto, siempre que se pueda. Retroceder a una distancia mayor a 6 pies mientras verifica la recepción de la entrega con el destinatario </li>
+                <li>Se realizan entregas sin contacto siempre que se pueda. Retroceder a una distancia mayor a 6 pies mientras verifica la recepción de la entrega con el destinatario </li>
                 <li>Limite el contacto con las superficies que se tocan con frecuencia durante las entregas, como timbres o manijas de puertas.</li>
                 <li>El comprador debe aplicarse alcohol en gel en las manos antes y después de la entrega.</li>
                 <li>Se recomienda desinfectar el envoltorio de entrega una vez ingresado en su domicilio.</li>
