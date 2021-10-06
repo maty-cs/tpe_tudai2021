@@ -29,7 +29,7 @@ class sessionController {
     function sessionLogout(){
         session_start();
         session_destroy();
-        $this->view->showLogin();
+        $this->view->showHome();
     }
 
     function sessionLogin(){
@@ -48,7 +48,7 @@ class sessionController {
                 session_start();
                 $_SESSION["email"] = $email;
                 
-                $this->view->showHome();
+                $this->view->showHome($user);
             } else {
                 $this->view->showLogin();
             }

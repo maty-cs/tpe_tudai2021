@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="stylesheet" href="css/indexver2-2.css">
+    <link rel="stylesheet" href="css/index_ver2-3.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,100;1,300&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css">
@@ -14,11 +14,20 @@
 </head>
 <body>
     <header id="home">
-        <!--
-        <div class="reposteria">
-            {include file="../img/bx-menu.tpl"}
-        </div>
         
+        <section class="reposteria">
+            <div>
+            <h2>Inicia sesión</h2>
+            <a href="login">Login</a>
+            </div>
+            
+            <div>
+            <h2>Cierra sesión</h2>
+            <a href="logout">Logout</a>           
+            </div>
+        </section>
+
+        <!--
         <nav class="navegacion">
             <a class="nav-opcion" id="Home" href="home">Home</a>
             <a class="nav-opcion" id="Productos" href="productos">Productos</a>

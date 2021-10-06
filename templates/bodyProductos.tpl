@@ -3,81 +3,83 @@
 <section>
     <h2 class="subtitulo">Nuestros Productos</h2>
 </section>
-<button id="addProducto">Añadir Producto</button>
-<button id="updateProducto">Modificar Producto</button>
-<button id="deleteProducto">Eliminar Producto</button>
 
-<form class="opciones" action="insertProduct" method="post">
-    <div class="nombreProductos">
-        <label for="nombre">Agregar Nombre del Producto</label>
-        <input type="text" name="nombre" id="nombreProducto">
-    </div>
+{if $user != "" && $user == true}
+    <button id="addProducto">Añadir Producto</button>
+    <button id="updateProducto">Modificar Producto</button>
+    <button id="deleteProducto">Eliminar Producto</button>
     
-    <div class="glutenProductos">
-        <input type="checkbox" name="gluten" id="contieneGluten" value="">
-        <label for="gluten">Gluten</label>
-    </div>
-
-    <div class="precioProductos">
-        <label for="precio">Ingrese precio del producto</label>
-        <input type="number" name="precio" id="agregarPrecio">
-    </div>
-
-    <div class="nombreProductos">
-    <label for="categoria">Ingrese categoría del producto</label>
-    <input type="text" name="categoria" id="nombreProducto">
-    </div>
-
-    <div class="botonesProductos">
-        <button type="submit" id="agregarProducto">Agregar</button>
-        <button type="submit" id="editar">Editar</button>
-        <button id="borrarUltimo">Borrar Último</button>
-    </div>
-</form>
-
-<form class="opciones" action="updateProduct" method="post">
-    <div class="nombreProductos">
-        <label for="nombre">Modificar Nombre del Producto</label>
-        <input type="text" name="nombre" id="nombreProducto">
-    </div>
+    <form class="opciones" action="insertProduct" method="post">
+        <div class="nombreProductos">
+            <label for="nombre">Agregar Nombre del Producto</label>
+            <input type="text" name="nombre" id="nombreProducto">
+        </div>
+        
+        <div class="glutenProductos">
+            <input type="checkbox" name="gluten" id="contieneGluten" value="">
+            <label for="gluten">Gluten</label>
+        </div>
     
-    <div class="glutenProductos">
-        <input type="checkbox" name="gluten" id="contieneGluten" value="">
-        <label for="gluten">Gluten</label>
-    </div>
-
-    <div class="precioProductos">
-        <label for="precio">Modificar precio del producto</label>
-        <input type="number" name="precio" id="agregarPrecio">
-    </div>
-
-    <div class="nombreProductos">
-    <label for="categoria">Modificar categoría del producto</label>
-    <input type="text" name="categoria" id="nombreProducto">
-    </div>
-
-    <div class="precioProductos">
-        <label for="id">Ingrese id a modificar</label>
-        <input type="number" name="id" id="editarId">
-    </div>
-
-    <div class="botonesProductos">
-        <button type="submit" id="editar">Editar</button>
-    </div>
-</form>
-
-<form class="opciones" action="deleteProduct" method="post">
-
-    <div class="precioProductos">
-        <label for="id">Ingrese id a eliminar</label>
-        <input type="number" name="id" id="editarId">
-    </div>
-
-    <div class="botonesProductos">
-        <button type="submit" id="editar">Borrar</button>
-    </div>
-</form>
-
+        <div class="precioProductos">
+            <label for="precio">Ingrese precio del producto</label>
+            <input type="number" name="precio" id="agregarPrecio">
+        </div>
+    
+        <div class="nombreProductos">
+        <label for="categoria">Ingrese categoría del producto</label>
+        <input type="text" name="categoria" id="nombreProducto">
+        </div>
+    
+        <div class="botonesProductos">
+            <button type="submit" id="agregarProducto">Agregar</button>
+            <button type="submit" id="editar">Editar</button>
+            <button id="borrarUltimo">Borrar Último</button>
+        </div>
+    </form>
+    
+    <form class="opciones" action="updateProduct" method="post">
+        <div class="nombreProductos">
+            <label for="nombre">Modificar Nombre del Producto</label>
+            <input type="text" name="nombre" id="nombreProducto">
+        </div>
+        
+        <div class="glutenProductos">
+            <input type="checkbox" name="gluten" id="contieneGluten" value="">
+            <label for="gluten">Gluten</label>
+        </div>
+    
+        <div class="precioProductos">
+            <label for="precio">Modificar precio del producto</label>
+            <input type="number" name="precio" id="agregarPrecio">
+        </div>
+    
+        <div class="nombreProductos">
+        <label for="categoria">Modificar categoría del producto</label>
+        <input type="text" name="categoria" id="nombreProducto">
+        </div>
+    
+        <div class="precioProductos">
+            <label for="id">Ingrese id a modificar</label>
+            <input type="number" name="id" id="editarId">
+        </div>
+    
+        <div class="botonesProductos">
+            <button type="submit" id="editar">Editar</button>
+        </div>
+    </form>
+    
+    <form class="opciones" action="deleteProduct" method="post">
+    
+        <div class="precioProductos">
+            <label for="id">Ingrese id a eliminar</label>
+            <input type="number" name="id" id="editarId">
+        </div>
+    
+        <div class="botonesProductos">
+            <button type="submit" id="editar">Borrar</button>
+        </div>
+    </form>
+{/if}
 
 <form action="filtrarResultados" method="post" class="seccionFiltro">
     <label for="categorias">Filtrar por Categoria</label>

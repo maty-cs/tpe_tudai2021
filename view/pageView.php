@@ -6,7 +6,6 @@
 
         function __construct(){
             $this->smarty = new Smarty();
-            //$this->smarty->compileAllTemplates('.tpl',true);
         }
 
         function printPage($products, $categorias){

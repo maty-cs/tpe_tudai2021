@@ -15,8 +15,6 @@
         }
 
         function showPage(){
-            $this->authHelper->checkSession();
-
             $defaultCategoria = 'Todas';
             $products = $this->model->getProducts($defaultCategoria);
             $categorias = $this->model->getCategorias();
