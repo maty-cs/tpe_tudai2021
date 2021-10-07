@@ -48,9 +48,9 @@ class sessionController {
                 session_start();
                 $_SESSION["email"] = $email;
                 
-                $this->view->showHome($user);
+                $this->view->showHome();
             } else {
-                $this->view->showLogin();
+                $this->view->showLogin("Error de verificación, pruebe de nuevo.");
             }
         }
     }

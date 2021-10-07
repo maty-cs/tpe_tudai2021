@@ -18,7 +18,8 @@
             $defaultCategoria = 'Todas';
             $products = $this->model->getProducts($defaultCategoria);
             $categorias = $this->model->getCategorias();
-            $this->view->printPage($products, $categorias);
+            $users = $this->model->getUsers();
+            $this->view->printPage($products, $categorias, $users);
         }
 
         function createProduct(){
@@ -57,6 +58,7 @@
 
             $products = $this->model->getProducts($_POST['categorias']);
             $categorias = $this->model->getCategorias();
-            $this->view->printPage($products, $categorias);
+            $user = $this->model->getUsers();
+            $this->view->printPage($products, $categorias, $user);
         }
     }

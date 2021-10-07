@@ -10,7 +10,7 @@ class sessionView{
     }
 
     function showLogin($error = ""){
-        $this->smarty->assign('error', $error);      
+        $this->smarty->assign('mensaje', $error);      
         $this->smarty->display('templates/session_v1.tpl');
     }
 

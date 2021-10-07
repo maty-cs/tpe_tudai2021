@@ -8,9 +8,10 @@
             $this->smarty = new Smarty();
         }
 
-        function printPage($products, $categorias){
+        function printPage($products, $categorias, $users){
             $this->smarty->assign('products', $products);
             $this->smarty->assign('categorias', $categorias);
+            $this->smarty->assign('users', $users);
             $this->smarty->display('./templates/bodyProductos.tpl');
         }
 

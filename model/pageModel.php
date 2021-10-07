@@ -17,7 +17,7 @@
                     $sentencia = $this->db->prepare("SELECT * FROM `productos` WHERE `categoria`='Postres'");
                 break;
                 default:
-                    echo ("Error al cargar productis de la base de datos SQL");
+                    echo ("Error al cargar productos de la base de datos SQL");
                 break;
             }
             $sentencia->execute();
@@ -26,10 +26,24 @@
         }
         
         function getCategorias(){
-            $sentencia = $this->db->prepare( "select * from categorias");
+            $sentencia = $this->db->prepare( "SELECT * FROM categorias");
             $sentencia->execute();
             $categorias = $sentencia->fetchAll(PDO::FETCH_OBJ);
             return $categorias;
+        }
+
+        function getUsers(){
+            session_start(['read_and_close'  => true]);
+            if(!isset($_SESSION["email"])){
+                $users = null;
+            }
+            else{
+                $email = $_SESSION["email"];
+                $sentencia = $this->db->prepare( "SELECT * FROM usertable WHERE email=? ");
+                $sentencia->execute(array($email));
+                $users = $sentencia->fetchAll(PDO::FETCH_OBJ);
+            }
+            return $users;
         }
 
         function insertTask($nombre, $gluten, $precio, $categoria){
