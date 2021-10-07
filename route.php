@@ -1,6 +1,7 @@
 <?php
   require_once('controller/pageController.php');
   require_once('controller/sessionController.php');
+  require_once('controller/categoriaController.php');
 
   define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -17,10 +18,13 @@
   
   $pageController = new pageController();
   $sessionController = new sessionController();
+  $categoriaController = new categoriaController();
 
 
-  //camino de la acción
+  //Camino de la acción
   switch($params[0]){
+
+    //Sesión
     case 'signIn':
       $sessionController->createSession();
       break;
@@ -30,12 +34,14 @@
     case 'login': 
       $sessionController->sessionLogin(); 
       break;
-  case 'logout': 
+    case 'logout': 
       $sessionController->sessionLogout(); 
       break;
-  case 'verify': 
+    case 'verify': 
       $sessionController->verifySession(); 
       break;
+
+    //Tabla Productos
     case 'home':
       $pageController->showPage($params[0]);
     break;
@@ -51,6 +57,18 @@
     case 'filtrarResultados':
       $pageController->filtroProductos();
     break;
+    
+    //Tabla Categorías
+    case 'insertCategoria':
+      $categoriaController->createCategoria();
+    break;
+    case 'deleteCategoria':
+      $categoriaController->deleteCategoria();
+    break;
+    case 'updateCategoria':
+      $categoriaController->updateCategoria();
+    break;
+
     default:
         echo("404 Page Not Found");
     break;

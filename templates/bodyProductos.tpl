@@ -18,59 +18,57 @@
         <form class="opciones" action="insertProduct" method="post">
             <div class="nombreProductos">
                 <label for="nombre">Agregar Nombre del Producto</label>
-                <input type="text" name="nombre" id="nombreProducto">
+                <input type="text" name="nombre" class="nombreProducto">
             </div>
             
             <div class="glutenProductos">
-                <input type="checkbox" name="gluten" id="contieneGluten" value="">
+                <input type="checkbox" name="gluten" class="contieneGluten" value="">
                 <label for="gluten">Gluten</label>
             </div>
         
             <div class="precioProductos">
                 <label for="precio">Ingrese precio del producto</label>
-                <input type="number" name="precio" id="agregarPrecio">
+                <input type="number" name="precio" class="agregarPrecio">
             </div>
         
             <div class="nombreProductos">
             <label for="categoria">Ingrese categoría del producto</label>
-            <input type="text" name="categoria" id="nombreProducto">
+            <input type="text" name="categoria" class="nombreProducto">
             </div>
         
             <div class="botonesProductos">
-                <button type="submit" id="agregarProducto">Agregar</button>
-                <button type="submit" id="editar">Editar</button>
-                <button id="borrarUltimo">Borrar Último</button>
+                <button type="submit" class="agregarProducto">Agregar</button>
             </div>
         </form>
         
         <form class="opciones" action="updateProduct" method="post">
             <div class="nombreProductos">
                 <label for="nombre">Modificar Nombre del Producto</label>
-                <input type="text" name="nombre" id="nombreProducto">
+                <input type="text" name="nombre" class="nombreProducto">
             </div>
             
             <div class="glutenProductos">
-                <input type="checkbox" name="gluten" id="contieneGluten" value="">
+                <input type="checkbox" name="gluten" class="contieneGluten" value="">
                 <label for="gluten">Gluten</label>
             </div>
         
             <div class="precioProductos">
                 <label for="precio">Modificar precio del producto</label>
-                <input type="number" name="precio" id="agregarPrecio">
+                <input type="number" name="precio" class="agregarPrecio">
             </div>
         
             <div class="nombreProductos">
             <label for="categoria">Modificar categoría del producto</label>
-            <input type="text" name="categoria" id="nombreProducto">
+            <input type="text" name="categoria" class="nombreProducto">
             </div>
         
             <div class="precioProductos">
                 <label for="id">Ingrese id a modificar</label>
-                <input type="number" name="id" id="editarId">
+                <input type="number" name="id" class="editarId">
             </div>
         
             <div class="botonesProductos">
-                <button type="submit" id="editar">Editar</button>
+                <button type="submit">Editar</button>
             </div>
         </form>
         
@@ -78,11 +76,11 @@
         
             <div class="precioProductos">
                 <label for="id">Ingrese id a eliminar</label>
-                <input type="number" name="id" id="editarId">
+                <input type="number" name="id" class="editarId">
             </div>
         
             <div class="botonesProductos">
-                <button type="submit" id="editar">Borrar</button>
+                <button type="submit"Borrar</button>
             </div>
         </form>
     {/if}
@@ -111,6 +109,7 @@
         </thead>
         <tbody id="agregado">
                 {foreach from=$products item=$product}
+                    <tr>  
                        <td>
                             <a class="nombreProducto" href="viewTask/{$product->id_product}">{$product->nombre}</a>       
                         </td>
@@ -122,13 +121,108 @@
                             No
                         {/if}
                         </td>
-                        <td>${$product->precio}</td> <tr>  
+                        <td>${$product->precio}</td> 
                     </tr>
                 {/foreach}
             
         </tbody>
     </table>
 </section>
+
+{if isset($users)}
+    {foreach from=$users item=$user}
+        {if $user->admin == 1}
+            {$rol = $user->admin}
+        {/if} 
+    {/foreach}
+    {if isset($rol)}        
+        <button id="addCategoria">Añadir Categoria</button>
+        <button id="updateCategoria">Modificar Categoria</button>
+        <button id="deleteCategoria">Eliminar Categoria</button>
+        
+        <form class="opciones" action="insertCategoria" method="post">
+            <div class="nombreProductos">
+                <label for="nombre">Agregar Categoria</label>
+                <input type="text" name="categoria" class="nombreProducto">
+            </div>
+        
+            <div class="precioProductos">
+                <label for="descripcion">Ingrese descripción del producto</label>
+                <textarea name="descripcion" class="agregarPrecio" cols="70" rows="1.5"></textarea>
+            </div>
+        
+            <div class="nombreProductos">
+            <label for="categoria">Ingrese conservación del tipo de producto</label>
+            <input type="text" name="conservacion" class="nombreProducto">
+            </div>
+            <div class="nombreProductos">
+            <label for="categoria">Ingrese tiempo de preparacion del tipo de producto</label>
+            <input type="number" name="tiempoPreparacion" class="nombreProducto">
+            </div>
+        
+            <div class="botonesProductos">
+                <button type="submit">Agregar</button>
+            </div>
+        </form>
+        
+        <form class="opciones" action="updateCategoria" method="post">
+            <div class="nombreProductos">
+                <label for="nombre">Modificar Categoria</label>
+                <input type="text" name="categoria" class="nombreProducto">
+            </div>
+            <div class="precioProductos">
+                <label for="descripcion">Modifique descripción del producto</label>
+                <textarea name="descripcion" class="agregarPrecio" cols="70" rows="1.5"></textarea>
+            </div>
+            <div class="nombreProductos">
+                <label for="categoria">Modifique conservación del tipo de producto</label>
+                <input type="text" name="conservacion" class="nombreProducto">
+            </div>
+            <div class="nombreProductos">
+                <label for="categoria">Modifique tiempo de preparacion del tipo de producto</label>
+                <input type="text" name="tiempoPreparacion" class="nombreProducto">
+            </div>
+            <div class="botonesProductos">
+                <button type="submit">Editar</button>
+            </div>
+        </form>
+
+        <form class="opciones" action="deleteCategoria" method="post">
+
+            <div class="precioProductos">
+                <label for="categoria">Ingrese categoria a eliminar</label>
+                <input type="categoria" name="categoria" class="editarId">
+            </div>
+
+            <div class="botonesProductos">
+                <button type="submit">Borrar</button>
+            </div>
+        </form>
+
+        <section class="tablaProductos">
+            <table>
+                <thead class="headTabla">
+                    <tr>
+                        <th>Categoría</th>
+                        <th>Descripción</th>
+                        <th>Conservación</th>
+                        <th>Tiempo de Preparación</th>
+                    </tr>
+                </thead>
+                <tbody id="agregado">
+                    {foreach from=$categorias item=$categoria}
+                        <tr>
+                            <td>{$categoria->categoria}</td>
+                            <td>{$categoria->descripcion}</td>
+                            <td>{$categoria->conservacion}</td>
+                            <td>{$categoria->tiempo_preparacion}min.</td>    
+                        </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+        </section>
+    {/if}
+{/if}
 
 <section class="envios">
     <h2 class="subtitulo">Envíos</h2>

@@ -171,11 +171,11 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     margin-left: 1vh;
     margin-right: 3vh;
 }
-.opciones #agregarPrecio, #nombreProducto{
+.opciones .agregarPrecio, .nombreProducto{
     margin-left: 1vh;
     width: 15vh;
 }
-.opciones #editarId{
+.opciones .editarId{
     margin-left: 8.5vh;
     width: 15vh;
 }
@@ -185,7 +185,7 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     margin-top: 1vh;
     margin-bottom: 1vh;
 }
-#addProducto, #updateProducto, #deleteProducto{
+#addProducto, #updateProducto, #deleteProducto, #addCategoria, #updateCategoria, #deleteCategoria{
     margin-left: 5vh;
     margin-top: 1vh;
     margin-bottom: 1vh;
@@ -196,10 +196,13 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     font-size: 2.5vh;
 
 }
-#contieneGluten{
+/*.precioProductos{
+    
+}*/
+.contieneGluten{
     margin-left: 1vh;
 }
-.opciones div #agregarPrecio{
+.opciones div .agregarPrecio{
     margin-left: 3.2vh;
 }
 .opciones div .botonesProductos{

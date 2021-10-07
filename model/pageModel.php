@@ -16,6 +16,9 @@
                 case 'Postres':
                     $sentencia = $this->db->prepare("SELECT * FROM `productos` WHERE `categoria`='Postres'");
                 break;
+                case 'Tartas':
+                    $sentencia = $this->db->prepare("SELECT * FROM `productos` WHERE `categoria`='Tartas'");
+                break;
                 default:
                     echo ("Error al cargar productos de la base de datos SQL");
                 break;
@@ -46,7 +49,7 @@
             return $users;
         }
 
-        function insertTask($nombre, $gluten, $precio, $categoria){
+        function insertProduct($nombre, $gluten, $precio, $categoria){
             $sentencia = $this->db->prepare("INSERT INTO productos(nombre, gluten, precio, categoria) VALUES(?, ?, ?, ?)");
             $sentencia->execute(array($nombre, $gluten, $precio, $categoria));
         }

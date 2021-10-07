@@ -30,7 +30,7 @@
             }else{
                 $gluten = 1;
             }
-            $this->model->insertTask($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria']);
+            $this->model->insertProduct($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria']);
             $this->view->showHomeLocation();
         }
         
@@ -54,8 +54,6 @@
         }
 
         function filtroProductos(){
-            $this->authHelper->checkSession();
-
             $products = $this->model->getProducts($_POST['categorias']);
             $categorias = $this->model->getCategorias();
             $user = $this->model->getUsers();
