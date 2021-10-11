@@ -111,7 +111,7 @@
                 {foreach from=$products item=$product}
                     <tr>  
                        <td>
-                            <a class="nombreProducto" href="viewTask/{$product->id_product}">{$product->nombre}</a>       
+                            <a class="nombreProducto" href="viewDetail/{$product->id_product}">{$product->nombre}</a>       
                         </td>
                         <td>{$product->categoria}</td>
                         <td>
@@ -198,31 +198,31 @@
                 <button type="submit">Borrar</button>
             </div>
         </form>
-
-        <section class="tablaProductos">
-            <table>
-                <thead class="headTabla">
-                    <tr>
-                        <th>Categoría</th>
-                        <th>Descripción</th>
-                        <th>Conservación</th>
-                        <th>Tiempo de Preparación</th>
-                    </tr>
-                </thead>
-                <tbody id="agregado">
-                    {foreach from=$categorias item=$categoria}
-                        <tr>
-                            <td>{$categoria->categoria}</td>
-                            <td>{$categoria->descripcion}</td>
-                            <td>{$categoria->conservacion}</td>
-                            <td>{$categoria->tiempo_preparacion}min.</td>    
-                        </tr>
-                    {/foreach}
-                </tbody>
-            </table>
-        </section>
     {/if}
 {/if}
+
+<section class="tablaProductos">
+<table>
+    <thead class="headTabla">
+        <tr>
+            <th>Categoría</th>
+            <th>Descripción</th>
+            <th>Conservación</th>
+            <th>Tiempo de Preparación</th>
+        </tr>
+    </thead>
+    <tbody id="agregado">
+        {foreach from=$categorias item=$categoria}
+            <tr>
+                <td>{$categoria->categoria}</td>
+                <td>{$categoria->descripcion}</td>
+                <td>{$categoria->conservacion}</td>
+                <td>{$categoria->tiempo_preparacion}min.</td>    
+            </tr>
+        {/foreach}
+    </tbody>
+</table>
+</section>
 
 <section class="envios">
     <h2 class="subtitulo">Envíos</h2>

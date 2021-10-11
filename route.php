@@ -57,6 +57,9 @@
     case 'filtrarResultados':
       $pageController->filtroProductos();
     break;
+    case 'viewDetail': 
+      $pageController->viewProduct($params[1]); 
+    break;
     
     //Tabla Categorías
     case 'insertCategoria':

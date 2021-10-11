@@ -64,4 +64,10 @@
             $sentencia->execute(array($nombre, $gluten, $precio, $categoria, $id));
         }
 
+        function getDetail($id){
+            $sentencia = $this->db->prepare("SELECT * FROM productos WHERE id_product=?");
+            $sentencia->execute(array($id));
+            $product = $sentencia->fetch(PDO::FETCH_OBJ);
+            return $product;
+        }
     }

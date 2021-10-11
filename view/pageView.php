@@ -15,6 +15,12 @@
             $this->smarty->display('./templates/bodyProductos.tpl');
         }
 
+        function showDetail($producto, $categorias){
+            $this->smarty->assign('producto', $producto);
+            $this->smarty->assign('categorias', $categorias);
+            $this->smarty->display('templates/productDetail.tpl');
+         }
+
         function showHomeLocation(){
             header("Location: ".BASE_URL."home");
         }

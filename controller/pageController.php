@@ -59,4 +59,10 @@
             $user = $this->model->getUsers();
             $this->view->printPage($products, $categorias, $user);
         }
+
+        function viewProduct($id){
+            $product = $this->model->getDetail($id);
+            $categorias = $this->model->getCategorias();
+            $this->view->showDetail($product, $categorias);
+        }
     }

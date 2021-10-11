@@ -5,7 +5,7 @@
             <p>hacemos la delicia que vos pidas</p>
         </div>
         <div class="redes-sociales">
-            <a href="" class="icono-redes">
+            <a href="https://www.twitter.com/" class="icono-redes">
                 <i class='bx bxl-twitter'></i>
             </a>
             <a href="" class="icono-redes">
