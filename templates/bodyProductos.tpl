@@ -33,7 +33,11 @@
         
             <div class="nombreProductos">
             <label for="categoria">Ingrese categoría del producto</label>
-            <input type="text" name="categoria" class="nombreProducto">
+            <select name="categoria" class="filtro">
+                {foreach from=$categorias item=$categoria}
+                    <option value="{$categoria->categoria}">{$categoria->categoria}</option>
+                {/foreach}
+            </select>
             </div>
         
             <div class="botonesProductos">
@@ -58,8 +62,12 @@
             </div>
         
             <div class="nombreProductos">
-            <label for="categoria">Modificar categoría del producto</label>
-            <input type="text" name="categoria" class="nombreProducto">
+                <label for="categoria">Modificar categoría del producto</label>
+                <select name="categoria" class="filtro">
+                    {foreach from=$categorias item=$categoria}
+                        <option value="{$categoria->categoria}">{$categoria->categoria}</option>
+                    {/foreach}
+                </select>
             </div>
         
             <div class="precioProductos">
@@ -88,7 +96,7 @@
 
 <form action="filtrarResultados" method="post" class="seccionFiltro">
     <label for="categorias">Filtrar por Categoria</label>
-    <select name="categorias" id="filtro">
+    <select name="categorias" class="filtro">
         <option value="Todas">---</option>
         {foreach from=$categorias item=$categoria}
             <option value="{$categoria->categoria}">{$categoria->categoria}</option>
