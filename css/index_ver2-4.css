@@ -230,9 +230,15 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     margin-bottom: 0,3vh;
     margin-top: 0.5vh;
 }
-.seccionFiltro #filtro{
+.seccionFiltro .filtro{
     width: 25vh;
     padding: 1vh;
+    margin-bottom: 0,3vh;
+    margin-top: 0.5vh;
+}
+.filtro{
+    width: 14.5vh;
+    padding: 0.5vh;
     margin-bottom: 0,3vh;
     margin-top: 0.5vh;
 }
