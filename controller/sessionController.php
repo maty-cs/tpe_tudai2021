@@ -55,4 +55,13 @@ class sessionController {
         }
     }
 
+    function adminSessions(){
+        $users = $this->model->getUsers();
+        $this->view->showSessions($users);
+    }
+
+    function giveRol(){
+    }
+    function deleteRol(){
+    }
 }

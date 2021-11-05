@@ -20,7 +20,7 @@ function asignarEventos(){
         aux = aux.nextElementSibling
         let formDelete = aux.nextElementSibling
         formDelete.classList.toggle("mostrar-form")
-    })
+    });
 
     document.getElementById("addCategoria").addEventListener("click", function(){
         let aux = document.getElementById("addCategoria").nextElementSibling
@@ -41,8 +41,7 @@ function asignarEventos(){
         aux = aux.nextElementSibling
         let formDelete = aux.nextElementSibling
         formDelete.classList.toggle("mostrar-form")
-    })
-    
+    });
 }
 
 window.onload = asignarEventos();

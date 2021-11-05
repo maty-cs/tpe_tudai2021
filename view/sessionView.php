@@ -21,4 +21,9 @@ class sessionView{
     function showHome(){
         header("Location: ".BASE_URL."home");
     }
+
+    function showSessions($users){
+        $this->smarty->assign('users', $users);      
+        $this->smarty->display('templates/adminSessions.tpl');
+    }
 }

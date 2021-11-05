@@ -23,17 +23,24 @@
             
             <div>
             <h2>Cierra sesión</h2>
-            <a href="logout">Logout</a>           
+            <a href="logout">Logout</a>
+            </div>
+
+            <div>
+                {if isset($users)}
+                    {foreach from=$users item=$user}
+                        {if $user->admin == 1}
+                            {$rol = $user->admin}
+                        {/if} 
+                    {/foreach}
+                    {if isset($rol)}
+                        <h2>Administrar sesiones</h2>
+                        <a href="adminSessions">Sesiones</a>
+                    {/if}
+                {/if}
             </div>
         </section>
 
-        <!--
-        <nav class="navegacion">
-            <a class="nav-opcion" id="Home" href="home">Home</a>
-            <a class="nav-opcion" id="Productos" href="productos">Productos</a>
-            <a class="nav-opcion" id="Contacto" href="contacto">Contacto</a>
-        </nav>
-        !-->
         <div class="contenedor">
             <h1 class="titulo">Pastelería Guille</h1>
             <p>¡Hacemos la delicia que vos pidas!</p>

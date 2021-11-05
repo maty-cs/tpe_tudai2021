@@ -40,6 +40,15 @@
     case 'verify': 
       $sessionController->verifySession(); 
       break;
+    case 'adminSessions':
+      $sessionController->adminSessions();
+      break;
+    case 'darAdmin':
+      $sessionController->giveRol();
+      break;
+    case 'quitarAdmin':
+      $sessionController->deleteRol();
+      break;
 
     //Tabla Productos
     case 'home':

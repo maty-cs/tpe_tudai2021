@@ -13,6 +13,13 @@ class userModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
+    function getUsers(){
+        $sentencia = $this->db->prepare('SELECT * FROM usertable');
+        $sentencia->execute();
+        $users = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $users;
+    }
+
     function insertUser($email, $password){
         $hash = password_hash ($password , PASSWORD_BCRYPT);
 
