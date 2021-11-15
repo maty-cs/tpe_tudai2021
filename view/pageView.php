@@ -12,12 +12,15 @@
             $this->smarty->assign('products', $products);
             $this->smarty->assign('categorias', $categorias);
             $this->smarty->assign('users', $users);
+            $this->smarty->assign('titulo', "Home"); 
             $this->smarty->display('./templates/bodyProductos.tpl');
         }
 
         function showDetail($producto, $categorias){
             $this->smarty->assign('producto', $producto);
             $this->smarty->assign('categorias', $categorias);
+            $this->smarty->assign('titulo', $producto->nombre); 
+
             $this->smarty->display('templates/productDetail.tpl');
          }
 

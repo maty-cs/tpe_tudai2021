@@ -12,32 +12,36 @@
 {/foreach}
 {if isset($rol)}        
     <section>
-            {*<button id="giveRol">Dar Rol</button>
-            <button id="updateProducto">Quitar Rol</button>
-            
-            <form class="opciones" action="darAdmin" method="post">
-                <div>
-                    <label for="id">Indique id del usuario a dar rol</label>
-                    <input type="number" name="id">            
-                </div>
-
-                <div class="botonesProductos">
-                    <button type="submit" class="agregarProducto">Agregar</button>
-                </div>
-            </form>
-            
-            <form class="opciones" action="quitarAdmin" method="post">
-                <div>
-                    <label for="id">Indique id del usuario a quitar rol</label>
-                    <input type="number" name="id">            
-                </div>
-
-                <div class="botonesProductos">
-                    <button type="submit">Quitar</button>
-                </div>
-            </form>
-            *}
-
+        <button id="giveRol">Dar Rol</button>
+        <button id="deleteRol">Quitar Rol</button>
+        
+        <form class="opciones" action="giveRol" method="post">
+            <div>
+                <label for="id">Indique id del usuario a dar rol</label>
+                <select name="ids" class="filtro">
+                    {foreach from=$users item=$user}
+                        <option value="{$user->id_user}">{$user->id_user}</option>
+                    {/foreach}
+                </select>        
+            </div>
+            <div class="botonesProductos">
+                <button type="submit" class="agregarProducto">Agregar</button>
+            </div>
+        </form>
+        
+        <form class="opciones" action="quitarAdmin" method="post">
+            <div>
+                <label for="id">Indique id del usuario a quitar rol</label>
+                <select name="ids" class="filtro">
+                {foreach from=$users item=$user}
+                    <option value="{$user->id_user}">{$user->id_user}</option>
+                {/foreach}
+            </select>             
+            </div>
+            <div class="botonesProductos">
+                <button type="submit">Quitar</button>
+            </div>
+        </form>
     </section>
 
     <section class="tablaProductos">
@@ -58,10 +62,8 @@
                             <td>{$user->email}</td>
                             <td>{if $user->admin == '1'}
                                     Admin
-                                    <a href="quitarAdmin">Quitar Rol</a>
                                 {else}
                                     Usuario
-                                    <a href="darAdmin">Dar Rol</a>
                                 {/if}
                             </td>
                         </tr>       
