@@ -43,7 +43,7 @@
     case 'adminSessions':
       $sessionController->adminSessions();
       break;
-    case 'darAdmin':
+    case 'giveRol':
       $sessionController->giveRol();
       break;
     case 'quitarAdmin':

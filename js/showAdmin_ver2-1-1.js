@@ -44,4 +44,27 @@ function asignarEventos(){
     });
 }
 
-window.onload = asignarEventos();
+function eventosSession() {
+    let giveRol = document.getElementById("giveRol");
+    giveRol.addEventListener("click", function(){
+        let aux = giveRol.nextElementSibling;
+        let formRol = aux.nextElementSibling;
+
+        formRol.classList.toggle("mostrar-form");
+    })
+
+    let deleteRol = document.getElementById("deleteRol");
+    deleteRol.addEventListener("click", function(){
+        let aux = giveRol.nextElementSibling;
+        let formDeleteRol = aux.nextElementSibling;
+
+        formDeleteRol.classList.toggle("mostrar-form");
+    });
+}
+
+if(document.title == "Cuentas"){
+    window.onload = eventosSession();
+}
+else{
+    window.onload = asignarEventos();
+}

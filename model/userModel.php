@@ -26,4 +26,14 @@ class userModel{
         $sentencia = $this->db->prepare("INSERT INTO usertable(email, clave) VALUES(?, ?)");
         $sentencia->execute(array($email, $hash));
     }
+
+    function setAdmin($id){
+        $sentencia = $this->db->prepare("UPDATE `usertable` SET `admin`='1' WHERE id_user`='?'");
+        $sentencia->execute(array($id));
+    }
+
+    function deleteAdmin($id){
+        $sentencia = $this->db->prepare("UPDATE usertable SET  `admin` = '1' WHERE id_user= ?");
+        $sentencia->execute(array($id));
+    }
 }
