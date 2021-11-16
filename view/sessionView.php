@@ -10,14 +10,11 @@ class sessionView{
     }
 
     function showLogin($error = ""){
-        $this->smarty->assign('mensaje', $error);
-        $this->smarty->assign('titulo', "LogIn"); 
-      
+        $this->smarty->assign('mensaje', $error);      
         $this->smarty->display('templates/session_v1.tpl');
     }
 
-    function showSignIn(){  
-        $this->smarty->assign('titulo', "Sign In"); 
+    function showSignIn(){   
         $this->smarty->display('templates/registro.tpl');
     }
 
@@ -27,7 +24,6 @@ class sessionView{
 
     function showSessions($users){
         $this->smarty->assign('users', $users);
-        $this->smarty->assign('titulo', "Cuentas");       
-        $this->smarty->display('templates/adminSessions.tpl');
+        $this->smarty->display('templates/adminSession.tpl');
     }
 }

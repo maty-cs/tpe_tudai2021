@@ -1,18 +1,15 @@
 <?php
 require_once "./model/userModel.php";
 require_once "./view/sessionView.php";
-require_once "./helpers/authHelper.php";
 
 class sessionController {
 
     private $model;
     private $view;
-    private $authHelper;
 
     function __construct(){
         $this->model = new userModel();
         $this->view = new sessionView();
-        $this->authHelper = new authHelper();
     }
 
     function createSession(){
@@ -63,28 +60,4 @@ class sessionController {
         $this->view->showSessions($users);
     }
 
-    function giveRol(){
-        $this->authHelper->checkSession();
-                
-        if(!empty($_POST['id'])){
-            $id = $_POST['id'];
-   
-            $this->model->setAdmin($id);
-
-            $users = $this->model->getUsers();
-            $this->view->showSessions($users);
-        }
-        else{
-            $users = $this->model->getUsers();
-            $this->view->showSessions($users);
-        }
-    }
-    function deleteRol(){
-        $this->authHelper->checkSession();
-        if(isset($_POST['id'])){
-            $id = $_POST['id'];
-   
-            $this->model->deleteAdmin($id);
-        }
-    }
 }

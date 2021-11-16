@@ -13,13 +13,6 @@ class userModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
-    function getUsers(){
-        $sentencia = $this->db->prepare('SELECT * FROM usertable');
-        $sentencia->execute();
-        $users = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $users;
-    }
-
     function insertUser($email, $password){
         $hash = password_hash ($password , PASSWORD_BCRYPT);
 
@@ -27,13 +20,10 @@ class userModel{
         $sentencia->execute(array($email, $hash));
     }
 
-    function setAdmin($id){
-        $sentencia = $this->db->prepare("UPDATE `usertable` SET `admin`='1' WHERE id_user`='?'");
-        $sentencia->execute(array($id));
-    }
-
-    function deleteAdmin($id){
-        $sentencia = $this->db->prepare("UPDATE usertable SET  `admin` = '1' WHERE id_user= ?");
-        $sentencia->execute(array($id));
+    function getUsers(){
+        $sentencia = $this->db->prepare('SELECT * FROM usertable');
+        $sentencia->execute();
+        $users = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $users;
     }
 }

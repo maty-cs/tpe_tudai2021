@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{$titulo}</title>
+    <title>Home</title>
     <link rel="stylesheet" href="css/index_ver2-4.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,100;1,300&display=swap">
@@ -17,27 +17,25 @@
         
         <section class="reposteria">
             <div>
-            <h2>Inicia sesión</h2>
-            <a href="login">Login</a>
+            <h2><a href="logout">Inicia sesión</a></h2>
             </div>
             
             <div>
-            <h2>Cierra sesión</h2>
-            <a href="logout">Logout</a>
+            <h2><a href="logout">Cierra sesión</a></h2>
             </div>
 
             <div>
-                {if isset($users)}
-                    {foreach from=$users item=$user}
-                        {if $user->admin == 1}
-                            {$rol = $user->admin}
-                        {/if} 
-                    {/foreach}
-                    {if isset($rol)}
-                        <h2>Administrar sesiones</h2>
-                        <a href="adminSessions">Sesiones</a>
+            {if isset($users)}
+                {foreach from=$users item=$user}
+                    {if $user->admin == 1}
+                        {$rol = $user->admin}
                     {/if}
+                {/foreach}
+                {if isset($rol)}
+                    <h2><a href="adminSessions">Administrar Cuentas</a></h2>
                 {/if}
+                
+            {/if}
             </div>
         </section>
 

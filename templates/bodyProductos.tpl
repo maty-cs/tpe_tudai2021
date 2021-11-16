@@ -72,10 +72,7 @@
         
             <div class="precioProductos">
                 <label for="id">Ingrese id a modificar</label>
-                <select name="id" class="filtro">
-                {foreach from=$products item=$product}
-                    <option value="{$product->id_product}">{$product->id_product}</option>
-                {/foreach}
+                <input type="number" name="id" class="editarId">
             </div>
         
             <div class="botonesProductos">
