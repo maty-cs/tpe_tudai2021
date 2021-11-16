@@ -26,4 +26,14 @@ class userModel{
         $users = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $users;
     }
+
+    function setAdmin($id){
+        $sentencia = $this->db->prepare("UPDATE usertable SET admin=1 WHERE id_user=?");
+        $sentencia->execute(array($id));
+    }
+
+    function deleteAdmin($id){
+        $sentencia = $this->db->prepare("UPDATE usertable SET  admin=0 WHERE id_user= ?");
+        $sentencia->execute(array($id));
+    }
 }

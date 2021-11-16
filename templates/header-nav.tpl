@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>{$titulo}</title>
     <link rel="stylesheet" href="css/index_ver2-4.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,100;1,300&display=swap">
@@ -17,7 +17,7 @@
         
         <section class="reposteria">
             <div>
-            <h2><a href="logout">Inicia sesión</a></h2>
+            <h2><a href="login">Inicia sesión</a></h2>
             </div>
             
             <div>

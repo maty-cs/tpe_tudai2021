@@ -44,12 +44,13 @@
     case 'adminSessions':
       $sessionController->adminSessions();
       break;
-    case 'darAdmin':
-      //$sessionController->giveRol();
+    case 'giveRol':
+      $sessionController->giveRol();
       break;
     case 'quitarAdmin':
-      //$sessionController->deleteRol();
+      $sessionController->deleteRol();
       break;
+
     //Tabla Productos
     case 'home':
       $pageController->showPage($params[0]);
