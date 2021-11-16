@@ -64,6 +64,23 @@ header{
     margin-top: 2vh;
 }
 
+.conteinerList h1{
+    margin: 2vh;
+    margin-left: 5vh;
+    font-size: 3vh;
+}
+
+.btn-action{
+    margin-left: 5vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    width: 15vh;
+    height: 8vh;
+    border-radius: 3px;
+    background-color: #bfb5d8;
+    font-size: 2.5vh;
+}
+
 /* Footer */
 
 footer{

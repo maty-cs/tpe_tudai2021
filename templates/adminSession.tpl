@@ -1,6 +1,6 @@
 {include file="../templates/header-nav.tpl"}
 
-<section>
+<section class="conteinerList">
     <h1>Lista de usuarios de la página</h1>
 </section>
 
@@ -13,8 +13,8 @@
 {if isset($rol)}        
     <section>
 
-    <button id="giveRol">Dar Rol</button>
-    <button id="deleteRol">Quitar Rol</button>
+    <button class="btn-action" id="giveRol">Dar Rol</button>
+    <button class="btn-action" id="deleteRol">Quitar Rol</button>
 
     <form class="opciones" action="giveRol" method="post">
         <div>
