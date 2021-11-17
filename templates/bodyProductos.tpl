@@ -11,9 +11,9 @@
         {/if} 
     {/foreach}
     {if isset($rol)}        
-        <button id="addProducto">Añadir Producto</button>
-        <button id="updateProducto">Modificar Producto</button>
-        <button id="deleteProducto">Eliminar Producto</button>
+        <button class="btn-action" id="addProducto">Añadir Producto</button>
+        <button class="btn-action" id="updateProducto">Modificar Producto</button>
+        <button class="btn-action" id="deleteProducto">Eliminar Producto</button>
         
         <form class="opciones" action="insertProduct" method="post">
             <div class="nombreProductos">
@@ -144,9 +144,9 @@
         {/if} 
     {/foreach}
     {if isset($rol)}        
-        <button id="addCategoria">Añadir Categoria</button>
-        <button id="updateCategoria">Modificar Categoria</button>
-        <button id="deleteCategoria">Eliminar Categoria</button>
+        <button class="btn-action" id="addCategoria">Añadir Categoria</button>
+        <button class="btn-action" id="updateCategoria">Modificar Categoria</button>
+        <button class="btn-action" id="deleteCategoria">Eliminar Categoria</button>
         
         <form class="opciones" action="insertCategoria" method="post">
             <div class="nombreProductos">

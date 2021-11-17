@@ -18,6 +18,6 @@
     </div>
     <div class="linea"></div>
 </footer>
-<script type="text/javascript" src="js/showAdmin_ver2-1-3.js"></script>
+<script type="text/javascript" src="js/showAdmin_ver2-2.js"></script>
 </body>
 </html>

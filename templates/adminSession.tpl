@@ -37,7 +37,17 @@
         <div class="botonesProductos">
             <button type="submit">Quitar</button>
         </div>
-    </form>   
+    </form>
+
+    <form class="opciones" action="quitarUser" method="post">
+    <div>
+        <label for="id">Indique id del usuario a eliminar</label>
+        <input type="number" name="id" class="agregarPrecio">            
+    </div>
+    <div class="botonesProductos">
+        <button type="submit">Eliminar</button>
+    </div>
+</form>    
 
     </section>
 
