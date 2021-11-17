@@ -23,9 +23,18 @@ class sessionController {
         if(!empty($_POST['email'] && $_POST['password'])){
             $email = $_POST['email'];
             $password = $_POST['password'];
-    
             $this->model->insertUser($email, $password);
-            $this->view->showLogin();
+
+            $user = $this->model->getUser($email);
+            if ($user && password_verify($password, $user->clave)) {
+
+                session_start();
+                $_SESSION["email"] = $email;
+                
+                $this->view->showHome();
+            } else {
+                $this->view->showLogin("Error de verificación, pruebe de nuevo.");
+            }
         }
     }
 

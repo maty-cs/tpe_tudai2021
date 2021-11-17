@@ -12,9 +12,11 @@
 {/foreach}
 {if isset($rol)}        
     <section>
-
-    <button class="btn-action" id="giveRol">Dar Rol</button>
-    <button class="btn-action" id="deleteRol">Quitar Rol</button>
+    <div class="btn-container">
+        <button class="btn-action" id="giveRol">Dar Rol</button>
+        <button class="btn-action" id="deleteRol">Quitar Rol</button>
+        <button class="btn-action" id="deleteUser">Borrar Usuario</button>
+    </div>
 
     <form class="opciones" action="giveRol" method="post">
         <div>

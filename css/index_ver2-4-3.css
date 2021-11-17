@@ -80,6 +80,9 @@ header{
     background-color: #bfb5d8;
     font-size: 2.5vh;
 }
+.btn-container{
+    display: flex;
+}
 
 /* Footer */
 
@@ -202,15 +205,15 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     margin-top: 1vh;
     margin-bottom: 1vh;
 }
-#addProducto, #updateProducto, #deleteProducto, #addCategoria, #updateCategoria, #deleteCategoria{
-    margin-left: 5vh;
+#addProducto, #updateProducto, #deleteProducto, #addCategoria, #updateCategoria, #deleteCategoria, .btn-action{
+    margin-left: 1.5vh;
     margin-top: 1vh;
     margin-bottom: 1vh;
-    width: 15vh;
-    height: 8vh;
+    width: 10vh;
+    height: 6vh;
     border-radius: 3px;
     background-color: #bfb5d8;
-    font-size: 2.5vh;
+    font-size: 1.92vh;
 
 }
 .detalle{
@@ -514,6 +517,13 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
         padding: 1vh;
         width: 13vh;
         margin-top: 1.5vh;
+    }
+    #addProducto, #updateProducto, #deleteProducto, #addCategoria, #updateCategoria, #deleteCategoria, .btn-action{
+        margin-left: 5vh;
+        margin-bottom: 1vh;
+        width: 15vh;
+        height: 8vh;
+        font-size: 2.5vh;
     }
 
     /* Envíos */
