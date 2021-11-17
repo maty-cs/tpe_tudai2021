@@ -36,4 +36,9 @@ class userModel{
         $sentencia = $this->db->prepare("UPDATE usertable SET  admin=0 WHERE id_user= ?");
         $sentencia->execute(array($id));
     }
+
+    function deleteAccount($id){
+        $sentencia = $this->db->prepare("DELETE FROM usertable WHERE id_user=?");
+        $sentencia->execute(array($id));
+    }
 }

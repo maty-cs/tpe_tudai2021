@@ -41,6 +41,7 @@
       $sessionController->verifySession(); 
       break;
 
+    //Acciones de administrador
     case 'adminSessions':
       $sessionController->adminSessions();
       break;
@@ -49,6 +50,9 @@
       break;
     case 'quitarAdmin':
       $sessionController->deleteRol();
+      break;
+    case 'quitarUser':
+      $sessionController->deleteUser();
       break;
 
     //Tabla Productos

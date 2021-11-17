@@ -104,4 +104,20 @@ class sessionController {
             $this->view->showSessions($users);
         }
     }
+
+    function deleteUser(){
+        $this->authHelper->checkSession();
+        if(isset($_POST['id'])){
+            $id = $_POST['id'];
+
+            $this->model->deleteAccount($id);
+            
+            $users = $this->model->getUsers();
+            $this->view->showSessions($users);
+        }
+        else{
+            $users = $this->model->getUsers();
+            $this->view->showSessions($users);
+        }
+    }
 }
