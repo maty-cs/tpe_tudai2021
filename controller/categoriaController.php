@@ -15,21 +15,21 @@ class categoriaController{
     }
 
     function createCategoria(){
-        $this->authHelper->checkSession();
+        $this->authHelper->checkAdmin();
 
         $this->model->insertCategoria($_POST['categoria'], $_POST['descripcion'], $_POST['conservacion'], $_POST['tiempoPreparacion']);
         $this->view->showHomeLocation();
     }
     
     function deleteCategoria(){
-        $this->authHelper->checkSession();
+        $this->authHelper->checkAdmin();
 
         $this->model->deleteCategoriaFromDB($_POST['categoria']);
         $this->view->showHomeLocation();
     }
 
     function updateCategoria(){
-        $this->authHelper->checkSession();
+        $this->authHelper->checkAdmin();
         $this->model->updateCategoriaFromDB($_POST['categoria'], $_POST['descripcion'], $_POST['conservacion'], $_POST['tiempoPreparacion']);
         $this->view->showHomeLocation();
     }

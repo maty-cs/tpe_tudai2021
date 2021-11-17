@@ -68,12 +68,13 @@ class sessionController {
     }
 
     function adminSessions(){
+        $this->authHelper->checkAdmin();
         $users = $this->model->getUsers();
         $this->view->showSessions($users);
     }
 
     function giveRol(){
-        $this->authHelper->checkSession();
+        $this->authHelper->checkAdmin();
 
         if(!empty($_POST['id'])){
             $id = $_POST['id'];
@@ -90,7 +91,7 @@ class sessionController {
     }
 
     function deleteRol(){
-        $this->authHelper->checkSession();
+        $this->authHelper->checkAdmin();
         if(isset($_POST['id'])){
             $id = $_POST['id'];
 

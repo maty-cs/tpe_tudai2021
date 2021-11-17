@@ -23,7 +23,7 @@
         }
 
         function createProduct(){
-            $this->authHelper->checkSession();
+            $this->authHelper->checkAdmin();
 
             if(!isset($_POST['gluten'])){
                 $gluten = 0;
@@ -35,14 +35,14 @@
         }
         
         function deleteProduct(){
-            $this->authHelper->checkSession();
+            $this->authHelper->checkAdmin();
 
             $this->model->deleteProductFromDB($_POST['id']);
             $this->view->showHomeLocation();
         }
 
         function updateProduct(){
-            $this->authHelper->checkSession();
+            $this->authHelper->checkAdmin();
 
             if(!isset($_POST['gluten'])){
                 $gluten = 0;
