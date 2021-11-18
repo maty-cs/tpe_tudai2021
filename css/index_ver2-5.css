@@ -351,6 +351,128 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     margin-bottom: 0vh;
 }
 
+/* Comentarios */
+
+#containerComentarios{
+        background-color: #f3f0f0;
+}
+
+#containerComentarios a{
+    text-decoration: none;
+}
+
+.comentarios{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.comentario-head{
+    letter-spacing: 1px;
+    margin: 4vh 0vh;
+    padding: 2vh 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.comentario-head span{
+    font-size: 3.2rem;
+    font-weight: 500;
+    background-color: #202020;
+    color: #ffff;
+    padding: 1vh 2vh;
+}*/
+
+.comentario-head h1{
+    font-size: 4vh;
+    margin-bottom: 2vh;
+    letter-spacing: 0.2vh;
+    text-transform: uppercase;
+    color: rgb(146, 143, 143);
+    margin-top: 2vh;
+
+}
+
+.bodyComentario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.bodyComentario ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.caja-comentario{
+    width: 65vh;
+    box-shadow: 2px 2px 3vh rgba(0, 0, 0,.1);
+    background-color: #ffff;
+    padding: 5vh;
+    margin: 2vh;
+    cursor: pointer;
+}
+
+.imagen-perfil{
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1vh;
+}
+
+.imagen-perfil img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.perfil{
+    display: flex;
+    align-items: center;
+}
+
+.nombre-usuario{
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre-usuario strong{
+    color: #3d3d3d;
+    font-size: 1.1rem;
+    letter-spacing: 0.05vh;
+}
+
+.nombre-usuario span{
+    color: #979797;
+    font-size: 0.8rem;
+}
+
+.comentario-puntaje{
+    color: #f9d71c;
+}
+
+.comentario-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.comentario-cliente p{
+    font-size: 0.9rem;
+    color: #4b4b4b;
+}
+
 /* Página de contacto */
 
 .formulario{

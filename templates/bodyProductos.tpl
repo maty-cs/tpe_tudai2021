@@ -282,5 +282,6 @@
         </div>
     </div>
 </section>
+{include file="../templates/vue/comentariosBody.tpl"}
 
 {include file="../templates/footer.tpl"} 
