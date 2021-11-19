@@ -16,8 +16,8 @@ class userModel{
     function insertUser($email, $password){
         $hash = password_hash ($password , PASSWORD_BCRYPT);
 
-        $sentencia = $this->db->prepare("INSERT INTO usertable(email, clave) VALUES(?, ?)");
-        $sentencia->execute(array($email, $hash));
+        $sentencia = $this->db->prepare("INSERT INTO usertable(email, clave, admin) VALUES(?, ?, ?)");
+        $sentencia->execute(array($email, $hash, 0));
     }
 
     function getUsers(){
