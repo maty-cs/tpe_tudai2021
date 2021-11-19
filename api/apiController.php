@@ -1,5 +1,5 @@
 <?php
-    require_once('./model/pageModel.php');
+    require_once('./api/apiModel.php');
     require_once('./api/apiView.php');
 
     class apiController{
@@ -7,7 +7,7 @@
         private $view;
 
         function __construct(){
-            $this->model= new pageModel();
+            $this->model= new apiModel();
             $this->view = new apiView();
         }
 
