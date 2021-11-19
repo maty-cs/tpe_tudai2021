@@ -354,7 +354,7 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
 /* Comentarios */
 
 #containerComentarios{
-        background-color: #f3f0f0;
+    background-color: #f3f0f0;
 }
 
 #containerComentarios a{
@@ -380,23 +380,30 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
 }
 
 .addComment{
-    border: solid 1px #887bac;
+    border: solid 1px #E2E2E2;
     border-radius: 5%;
     padding-left: 1vh;
-    background-color: #f3f0f0;
+    background-color: #ffff;
+    box-shadow: 0.6vh 0.4vh #74777C;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     text-align: center;
     margin-left: 50vh;
     margin-right: 50vh;
-    width: 50%;
+    width: 80%;
     margin-top: 5vh;
     padding-top: 2vh;
     padding-bottom: 2vh;
 }
 
-.textarea{
+.addComment div label{
+    font-size: 3vh;
+    color: #001d36;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+}
+.addComment .textarea{
     width: 95%;
     padding: 0.5vh;
     margin-bottom: 0,3vh;
@@ -405,14 +412,11 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
 }
 
 .btn-comment{
-    margin-left: 1.5vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    width: 10vh;
-    height: 6vh;
+    width: 13vh;
+    height: 7vh;    
     border-radius: 3px;
-    background-color: #bfb5d8;
-    font-size: 1.92vh;
+    background-color: #aa81de;
+    font-size: 2.5vh;
 }
 
 .addComment div{
@@ -422,6 +426,11 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     display: flex;
     margin-bottom: 1vh;
     flex-direction: column;
+    align-items: baseline;
+}
+.addComment .submitComment{
+    flex-direction:initial;
+    justify-content: space-evenly;
     align-items: center;
 }
 

@@ -11,17 +11,17 @@
                 <label for="comentario">Tu comentario</label>
                 <textarea name="comentario" id="userComment" class="textarea" cols="30" rows="10" placeholder="¿Qué piensas?" required></textarea>
             </div>
-            <div>
-                <label for="reseña">Añade una reseña</label>
-                <select name="reseña" id="userReview" class="filtro" required>
-                    <option value="1">1 estrella</option>
-                    <option value="2">2 estrellas</option>
-                    <option value="3">3 estrellas</option>
-                    <option value="4">4 estrellas</option>
-                    <option value="5">5 estrellas</option>
-                </select>
-            </div>
-            <div>
+            <div class="submitComment">
+                <div>
+                    <label for="reseña">Añade una reseña</label>
+                    <select name="reseña" id="userReview" class="filtro" required>
+                        <option value="1">1 estrella</option>
+                        <option value="2">2 estrellas</option>
+                        <option value="3">3 estrellas</option>
+                        <option value="4">4 estrellas</option>
+                        <option value="5">5 estrellas</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn-comment" id="addComment">Publicar</button>
             </div>
         </div>
