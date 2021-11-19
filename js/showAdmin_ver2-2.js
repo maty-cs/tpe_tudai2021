@@ -1,19 +1,21 @@
 "use strict"
 
-function asignarEventos(){   
-    let btnActions = document.querySelectorAll(".btn-action");
-    for (let i = 0; i < 6; i++) {
-        btnActions[i].addEventListener("click", function(){
-            let form = document.querySelectorAll(".opciones");
-            form[i].classList.toggle("mostrar-form");
-        });
+function asignarEventos(){
+    if(document.querySelector(".btn-action")){
+        let btnActions = document.querySelectorAll(".btn-action");
+        for (let i = 0; i < 6; i++) {
+            btnActions[i].addEventListener("click", function(){
+                let form = document.querySelectorAll(".opciones");
+                form[i].classList.toggle("mostrar-form");
+            });
+        }
     }
     
     let btnComment = document.getElementById("addComment");
     btnComment.addEventListener("click", function(e){
-        console.log(e.cancelable)
+        alert("ando")
         e.preventDefault();
-        postComment;
+        postComment();
     })
 }
 

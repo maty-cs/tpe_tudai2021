@@ -20,7 +20,7 @@
             {if isset($users)}
                 {foreach from=$users item=$user}
                     <div>
-                        <h2 id="#user">{$user->email}</h2>
+                        <h2 id="user">{$user->email}</h2>
                     </div>
                     
                     <div>

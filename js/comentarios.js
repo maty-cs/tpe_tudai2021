@@ -14,8 +14,6 @@ async function getComentarios(){
     try {
         let response = await fetch(API_URL);
         let json = await response.json();
-        console.log(json)
-
         conteiner.comentarios = json;
     } 
     catch (error) {
