@@ -23,4 +23,43 @@ async function getComentarios(){
     }
 }
 
-window.onload = getComentarios();
+async function postComment() {
+    let user = document.getElementById("user").innerHTML;
+    let comment = document.getElementById("userComment").value;
+    let review = document.getElementById("userReview").value;
+    let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        
+    if(user != null && user != "" && comment != null && comment != "" && review != null && review != ""){
+        let item = {
+            usuario: user,
+            comentario: comment,
+            puntaje: review,
+            fecha: date
+        }
+    
+        try {
+            let response = await fetch(API_URL, {
+                "method": "POST",
+                "headers": {"Content-type": "application/json"},
+                "body": JSON.stringify(item)
+            });
+            if(response.ok){
+                getComentarios();
+            }
+            else{
+                console.log("error al crear comentario");
+            }
+    
+        }
+        catch (error) {
+         console.log(error);
+        }
+    }
+    else{
+        console.log("datos nulos");
+    }
+}
+
+if(document.title = "Home"){
+    window.onload = getComentarios();
+}

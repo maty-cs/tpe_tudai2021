@@ -1,7 +1,33 @@
+
 {literal}
     <section id="containerComentarios" class="comentarios">
-        <div class="comentario-head">
-            <h1>{{titulo}}</h1>
+    <div class="comentario-head">
+    <h1>{{titulo}}</h1>
+{/literal}
+
+    {if isset($users)}
+        <div class="addComment mostrar-form">
+            <div class="nombreProductos">        
+                <label for="comentario">Tu comentario</label>
+                <textarea name="comentario" id="userComment" class="textarea" cols="30" rows="10" placeholder="¿Qué piensas?" required></textarea>
+            </div>
+            <div>
+                <label for="reseña">Añade una reseña</label>
+                <select name="reseña" id="userReview" class="filtro" required>
+                    <option value="1">1 estrella</option>
+                    <option value="2">2 estrellas</option>
+                    <option value="3">3 estrellas</option>
+                    <option value="4">4 estrellas</option>
+                    <option value="5">5 estrellas</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="btn-comment" id="addComment">Publicar</button>
+            </div>
+        </div>
+    {/if}
+
+{literal}
         </div>
         <div class="bodyComentario">
             <ul>    

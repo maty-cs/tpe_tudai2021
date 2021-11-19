@@ -8,6 +8,13 @@ function asignarEventos(){
             form[i].classList.toggle("mostrar-form");
         });
     }
+    
+    let btnComment = document.getElementById("addComment");
+    btnComment.addEventListener("click", function(e){
+        console.log(e.cancelable)
+        e.preventDefault();
+        postComment;
+    })
 }
 
 function eventosSession() {
@@ -24,7 +31,10 @@ window.addEventListener('DOMContentLoaded', function() {
     if(document.title == "Administrador"){
         eventosSession();
     }
-    else{
+    else if(document.title == "Home"){
        asignarEventos();
+    }
+    else{
+        console.log("no hay eventos que asignar");
     }
 });

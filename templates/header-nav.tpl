@@ -17,27 +17,36 @@
     <header id="home">
         
         <section class="reposteria">
-            <div>
-            <h2><a href="login">Inicia sesión</a></h2>
-            </div>
-            
-            <div>
-            <h2><a href="logout">Cierra sesión</a></h2>
-            </div>
-
-            <div>
             {if isset($users)}
                 {foreach from=$users item=$user}
-                    {if $user->admin == 1}
-                        {$rol = $user->admin}
-                    {/if}
+                    <div>
+                        <h2 id="#user">{$user->email}</h2>
+                    </div>
+                    
+                    <div>
+                        <h2><a href="logout">Cierra sesión</a></h2>
+                    </div>
+
+                    <div>
+                        {if $user->admin == 1}
+                            {$rol = $user->admin}
+                        {/if}
+                        {if isset($rol)}
+                            <h2><a href="adminSessions">Administrar Cuentas</a></h2>
+                        {/if}
+                        
+                    </div>
                 {/foreach}
-                {if isset($rol)}
-                    <h2><a href="adminSessions">Administrar Cuentas</a></h2>
-                {/if}
-                
+
+                {else}
+                    <div>
+                        <h2><a href="login">Inicia sesión</a></h2>
+                    </div>
+                        
+                    <div>
+                        <h2><a href="logout">Cierra sesión</a></h2>
+                    </div>
             {/if}
-            </div>
         </section>
 
         <div class="contenedor">
