@@ -26,6 +26,7 @@ class sessionView{
 
     function showSessions($users){
         $this->smarty->assign('users', $users);
+        $this->smarty->assign('currentUser', $_SESSION["email"]);
         $this->smarty->assign('titulo', "Administrador");
         $this->smarty->display('templates/adminSession.tpl');
     }

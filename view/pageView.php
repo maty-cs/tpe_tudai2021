@@ -12,8 +12,13 @@
             $this->smarty->assign('products', $products);
             $this->smarty->assign('categorias', $categorias);
             $this->smarty->assign('users', $users);
-            $this->smarty->assign('titulo', "Home");
-            $this->smarty->display('./templates/bodyProductos.tpl');
+
+            if (!empty($_SESSION["email"])) {
+                $this->smarty->assign('currentUser', $_SESSION["email"]);
+            }
+            
+                $this->smarty->assign('titulo', "Home");
+                $this->smarty->display('./templates/bodyProductos.tpl');
         }
 
         function showDetail($producto, $categorias){

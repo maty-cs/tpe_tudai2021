@@ -13,7 +13,6 @@ function asignarEventos(){
     
     let btnComment = document.getElementById("addComment");
     btnComment.addEventListener("click", function(e){
-        alert("ando")
         e.preventDefault();
         postComment();
     })

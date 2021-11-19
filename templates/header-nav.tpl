@@ -17,35 +17,36 @@
     <header id="home">
         
         <section class="reposteria">
-            {if isset($users)}
+            {if isset($users, $currentUser)}
                 {foreach from=$users item=$user}
-                    <div>
-                        <h2 id="user">{$user->email}</h2>
-                    </div>
-                    
-                    <div>
-                        <h2><a href="logout">Cierra sesión</a></h2>
-                    </div>
-
-                    <div>
-                        {if $user->admin == 1}
-                            {$rol = $user->admin}
-                        {/if}
-                        {if isset($rol)}
-                            <h2><a href="adminSessions">Administrar Cuentas</a></h2>
-                        {/if}
-                        
-                    </div>
+                    {if $user->email == $currentUser}
+                        <div>
+                            <h2 id="user">{$user->email}</h2>
+                            </div>
+                            
+                            <div>
+                                <h2><a href="logout">Cierra sesión</a></h2>
+                            </div>
+                            
+                        <div>
+                            {if $user->admin == 1}
+                                {$rol = $user->admin}
+                            {/if}
+                            {if isset($rol)}
+                                <h2><a href="adminSessions">Administrar Cuentas</a></h2>
+                            {/if}
+                        </div>
+                    {/if}
                 {/foreach}
 
-                {else}
-                    <div>
-                        <h2><a href="login">Inicia sesión</a></h2>
-                    </div>
-                        
-                    <div>
-                        <h2><a href="logout">Cierra sesión</a></h2>
-                    </div>
+            {else}
+                <div>
+                    <h2><a href="login">Inicia sesión</a></h2>
+                </div>
+                    
+                <div>
+                    <h2><a href="logout">Cierra sesión</a></h2>
+                </div>
             {/if}
         </section>
 
