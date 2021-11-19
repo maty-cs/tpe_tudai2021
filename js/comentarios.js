@@ -58,6 +58,42 @@ async function postComment() {
     }
 }
 
+async function deleteComment(i){
+    let btn = document.querySelectorAll(".btn-delete");
+    let id = btn[i].nextElementSibling.innerHTML;
+
+    try {
+        let response = await fetch(API_URL+'/'+id, {
+            "method": "DELETE"
+        });
+        if(response.ok){
+            console.log("comentario "+id+" eliminado");
+            getComentarios();
+        }
+        else{
+            console.log("error al eliminar comentario");
+        }
+    }
+    catch (error) {
+     console.log(error);
+    }
+}
+
+function addEventoDelete(){
+    if(document.querySelector(".btn-delete") != null){
+        let btnDelete = document.querySelectorAll(".btn-delete");
+        console.log(btnDelete.length);
+        for (let i = 0; i < btnDelete.length; i++) {
+            btnDelete[i].addEventListener("click", function(e){
+                e.preventDefault();
+               deleteComment(i);
+               setTimeout(addEventoDelete, 1000);
+            });
+        }
+    }
+}
+
 if(document.title = "Home"){
     window.onload = getComentarios();
+    setTimeout(addEventoDelete, 1000);
 }

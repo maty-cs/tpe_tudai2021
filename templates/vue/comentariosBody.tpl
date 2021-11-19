@@ -5,7 +5,7 @@
     <h1>{{titulo}}</h1>
 {/literal}
 
-    {if isset($users)}
+    {if isset($currentUser)}
         <div class="addComment mostrar-form">
             <div class="nombreProductos">        
                 <label for="comentario">Tu comentario</label>
@@ -25,46 +25,176 @@
                 <button type="submit" class="btn-comment" id="addComment">Publicar</button>
             </div>
         </div>
-    {/if}
 
-{literal}
-        </div>
+        {foreach from=$users item=user}
+            {if $currentUser = $user->email && $user->admin == 1}
+                {literal}
+                    </div>
+                        <div class="bodyComentario">
+                            <ul>    
+                                <li v-for="comentario in comentarios" class="caja-comentario">
+                                    <div class="comentario-top">
+                                        <div class="perfil">
+                                        <div class="imagen-perfil">
+
+                                        </div>
+                                            <div class="nombre-usuario">
+                                            <strong>{{comentario.usuario}}</strong>
+                                            </div>
+                                            </div>
+                                        <div class="comentario-puntaje">
+                                            <div v-if="comentario.puntaje === '1'">
+                                            <i class='bx bxs-star' ></i>
+                                            <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                </div>
+                                                <div v-else-if="comentario.puntaje === '2'">
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                </div>
+                                            <div v-else-if="comentario.puntaje === '3'">
+                                            <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                </div>
+                                            <div v-else-if="comentario.puntaje === '4'">
+                                            <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                            </div>
+                                            <div v-else>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                </div>
+                                        </div>
+                                        </div>
+                    
+                                        <div class="comentario-cliente">
+                                        <p>{{comentario.comentario}}</p>
+                                    </div>
+                                    <div class="deleteComment">
+                                        <button class="btn-delete">borrar</button>
+                                        <p>{{comentario.id_comentario}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                {/literal}
+            {else}
+                {literal}
+                    </div>
+                        <div class="bodyComentario">
+                            <ul>    
+                                <li v-for="comentario in comentarios" class="caja-comentario">
+                                    <div class="comentario-top">
+                                        <div class="perfil">
+                                        <div class="imagen-perfil">
+                                            
+                                        </div>
+                                            <div class="nombre-usuario">
+                                            <strong>{{comentario.usuario}}</strong>
+                                            </div>
+                                            </div>
+                                        <div class="comentario-puntaje">
+                                            <div v-if="comentario.puntaje === '1'">
+                                            <i class='bx bxs-star' ></i>
+                                            <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                </div>
+                                                <div v-else-if="comentario.puntaje === '2'">
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                </div>
+                                            <div v-else-if="comentario.puntaje === '3'">
+                                            <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                                </div>
+                                            <div v-else-if="comentario.puntaje === '4'">
+                                            <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bx-star' ></i>
+                                            </div>
+                                            <div v-else>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                <i class='bx bxs-star' ></i>
+                                                </div>
+                                        </div>
+                                        </div>
+                
+                                        <div class="comentario-cliente">
+                                        <p>{{comentario.comentario}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        {/literal}           
+            {/if}
+        {/foreach}
+        
+    {else}   
+        {literal}
+    </div>
         <div class="bodyComentario">
             <ul>    
                 <li v-for="comentario in comentarios" class="caja-comentario">
                     <div class="comentario-top">
                         <div class="perfil">
-                            <div class="imagen-perfil">
+                        <div class="imagen-perfil">
                             
-                            </div>
-                            <div class="nombre-usuario">
-                                <strong>{{comentario.usuario}}</strong>
-                            </div>
                         </div>
+                            <div class="nombre-usuario">
+                            <strong>{{comentario.usuario}}</strong>
+                            </div>
+                            </div>
                         <div class="comentario-puntaje">
                             <div v-if="comentario.puntaje === '1'">
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bx-star' ></i>
+                                <i class='bx bx-star' ></i>
+                                <i class='bx bx-star' ></i>
+                                <i class='bx bx-star' ></i>
+                                </div>
+                                <div v-else-if="comentario.puntaje === '2'">
+                                <i class='bx bxs-star' ></i>
                                 <i class='bx bxs-star' ></i>
                                 <i class='bx bx-star' ></i>
                                 <i class='bx bx-star' ></i>
                                 <i class='bx bx-star' ></i>
-                                <i class='bx bx-star' ></i>
-                            </div>
-                            <div v-else-if="comentario.puntaje === '2'">
-                                <i class='bx bxs-star' ></i>
-                                <i class='bx bxs-star' ></i>
-                                <i class='bx bx-star' ></i>
-                                <i class='bx bx-star' ></i>
-                                <i class='bx bx-star' ></i>
-                            </div>
+                                </div>
                             <div v-else-if="comentario.puntaje === '3'">
-                                <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
                                 <i class='bx bxs-star' ></i>
                                 <i class='bx bxs-star' ></i>
                                 <i class='bx bx-star' ></i>
                                 <i class='bx bx-star' ></i>
-                            </div>
+                                </div>
                             <div v-else-if="comentario.puntaje === '4'">
-                                <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
                                 <i class='bx bxs-star' ></i>
                                 <i class='bx bxs-star' ></i>
                                 <i class='bx bxs-star' ></i>
@@ -76,15 +206,16 @@
                                 <i class='bx bxs-star' ></i>
                                 <i class='bx bxs-star' ></i>
                                 <i class='bx bxs-star' ></i>
-                            </div>
+                                </div>
                         </div>
-                    </div>
+                        </div>
 
-                    <div class="comentario-cliente">
+                        <div class="comentario-cliente">
                         <p>{{comentario.comentario}}</p>
                     </div>
                 </li>
             </ul>
         </div>
-    </section>
-{/literal}
+        {/literal}
+    {/if}
+</section>

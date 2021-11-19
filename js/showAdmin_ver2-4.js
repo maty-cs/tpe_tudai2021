@@ -1,7 +1,7 @@
 "use strict"
 
 function asignarEventos(){
-    if(document.querySelector(".btn-action")){
+    if(document.querySelector(".btn-action") != null){
         let btnActions = document.querySelectorAll(".btn-action");
         for (let i = 0; i < 6; i++) {
             btnActions[i].addEventListener("click", function(){
@@ -10,12 +10,14 @@ function asignarEventos(){
             });
         }
     }
-    
-    let btnComment = document.getElementById("addComment");
-    btnComment.addEventListener("click", function(e){
-        e.preventDefault();
-        postComment();
-    })
+
+    if(document.getElementById("addComment") != null){
+        let btnComment = document.getElementById("addComment");
+        btnComment.addEventListener("click", function(e){
+            e.preventDefault();
+            postComment();
+        });
+    }
 }
 
 function eventosSession() {
@@ -27,6 +29,7 @@ function eventosSession() {
         });
     }
 }
+
 
 window.addEventListener('DOMContentLoaded', function() {
     if(document.title == "Administrador"){
