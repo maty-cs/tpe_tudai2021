@@ -333,6 +333,22 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     margin-bottom: -2vh;
 }
 
+.imgContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5vh;
+    margin-bottom: 3vh;
+    margin-left: 20vh;
+}
+.imgContainer img{
+    border: 5px solid #f68084;
+    border-radius: 5%;
+    width: 50%;
+    height: 30%;
+    max-width: 640px;
+    max-height: 480px;
+}
+
 /* Horarios */
 
 .horario{

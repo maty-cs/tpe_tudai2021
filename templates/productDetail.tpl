@@ -22,7 +22,7 @@
                         <p>Es recomendado conservar {$categoria->conservacion}.</p>
                         <li>¿Cuánto debo esperar a que esté listo mi pedido?</li>
                         <p>Alrededor de {$categoria->tiempo_preparacion} minutos.</p>
-                        <li><img src="{$imagen->path}" alt="{$producto->nombre}"></li>
+                        <li class="imgContainer">{html_image file="{$imagen->path}" width="800px" height="600px"}</li>
                         <li>Precio del producto seleccionado</li>
                         <p>${$producto->precio}</p>
                     {/if}

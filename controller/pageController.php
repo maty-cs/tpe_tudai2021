@@ -32,7 +32,7 @@
                     $gluten = 1;
                 }
 
-                $filePath = "../img/" . uniqid("", true).".".strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
+                $filePath = "./img/" . uniqid("", true).".".strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
                 move_uploaded_file($_FILES["imagen"]["tmp_name"], $filePath).$_FILES['imagen']['name'];
 
 
@@ -58,7 +58,7 @@
                     $gluten = 1;
                 }
 
-                $filePath = "../img/" . uniqid("", true).".".strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
+                $filePath = "./img/" . uniqid("", true).".".strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
                 move_uploaded_file($_FILES["imagen"]["tmp_name"], $filePath).$_FILES['imagen']['name'];
 
                 $this->model->updateProductFromDB($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria'], $filePath, $_POST['id']);
