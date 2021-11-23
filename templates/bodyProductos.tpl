@@ -15,7 +15,7 @@
         <button class="btn-action" id="updateProducto">Modificar Producto</button>
         <button class="btn-action" id="deleteProducto">Eliminar Producto</button>
         
-        <form class="opciones" action="insertProduct" method="post">
+        <form class="opciones" action="insertProduct" method="post" enctype="multipart/form-data">
             <div class="nombreProductos">
                 <label for="nombre">Agregar Nombre del Producto</label>
                 <input type="text" name="nombre" class="nombreProducto">
@@ -24,6 +24,11 @@
             <div class="glutenProductos">
                 <input type="checkbox" name="gluten" class="contieneGluten" value="">
                 <label for="gluten">Gluten</label>
+            </div>
+
+            <div class="imagenDB">
+                <label for="imagen">Agregue una imagen</label>
+                <input class="precio" type="file" name="imagen" id="imgProduct">
             </div>
         
             <div class="precioProductos">
@@ -54,6 +59,11 @@
             <div class="glutenProductos">
                 <input type="checkbox" name="gluten" class="contieneGluten" value="">
                 <label for="gluten">Gluten</label>
+            </div>
+
+            <div class="imagenDB">
+                <label for="imagen">Edite la imagen</label>
+                <input class="precio" type="file" name="imagen" id="imgProduct">
             </div>
         
             <div class="precioProductos">

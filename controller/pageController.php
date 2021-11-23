@@ -25,13 +25,20 @@
         function createProduct(){
             $this->authHelper->checkAdmin();
 
-            if(!isset($_POST['gluten'])){
-                $gluten = 0;
-            }else{
-                $gluten = 1;
+            if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png"){
+                if(!isset($_POST['gluten'])){
+                    $gluten = 0;
+                }else{
+                    $gluten = 1;
+                }
+
+                $filePath = "../img/" . uniqid("", true).".".strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
+                move_uploaded_file($_FILES["imagen"]["tmp_name"], $filePath);
+
+
+                $this->model->insertProduct($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria'], $_FILES['imagen']['tmp_name']);
+                $this->view->showHomeLocation();
             }
-            $this->model->insertProduct($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria']);
-            $this->view->showHomeLocation();
         }
         
         function deleteProduct(){
@@ -62,8 +69,9 @@
 
         function viewProduct($id){
             $product = $this->model->getDetail($id);
+            $image = $this->model->getImage($id);
             $categorias = $this->model->getCategorias();
             $users = $this->model->getUsers();
-            $this->view->showDetail($product, $categorias, $users);
+            $this->view->showDetail($product, $categorias, $users, $image);
         }
     }

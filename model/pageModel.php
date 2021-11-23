@@ -49,14 +49,21 @@
             return $users;
         }
 
-        function insertProduct($nombre, $gluten, $precio, $categoria){
+        function insertProduct($nombre, $gluten, $precio, $categoria, $img){
             $sentencia = $this->db->prepare("INSERT INTO productos(nombre, gluten, precio, categoria) VALUES(?, ?, ?, ?)");
             $sentencia->execute(array($nombre, $gluten, $precio, $categoria));
+            $id = $this->db->lastInsertId();
+            
+            $sentenciaIMG = $this->db->prepare("INSERT INTO images(id_product, path) VALUES(?, ?)");
+            $sentenciaIMG->execute(array($id, $img));
         }
 
         function deleteProductFromDB($id){
             $sentencia = $this->db->prepare("DELETE FROM productos WHERE id_product=?");
             $sentencia->execute(array($id));
+
+            $sentenciaIMG = $this->db->prepare("DELETE FROM images WHERE id_product=?");
+            $sentenciaIMG->execute(array($id));
         }
 
         function updateProductFromDB($nombre, $gluten, $precio, $categoria, $id){
@@ -69,6 +76,13 @@
             $sentencia->execute(array($id));
             $product = $sentencia->fetch(PDO::FETCH_OBJ);
             return $product;
+        }
+
+        function getImage($id){
+            $sentencia = $this->db->prepare("SELECT * FROM images WHERE id_product=?");
+            $sentencia->execute(array($id));
+            $image = $sentencia->fetch(PDO::FETCH_OBJ);
+            return $image;
         }
 
     }

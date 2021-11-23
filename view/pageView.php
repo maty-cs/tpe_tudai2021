@@ -21,9 +21,10 @@
             $this->smarty->display('./templates/bodyProductos.tpl');
         }
 
-        function showDetail($producto, $categorias, $users){
+        function showDetail($producto, $categorias, $users, $image){
             $this->smarty->assign('producto', $producto);
             $this->smarty->assign('categorias', $categorias);
+            $this->smarty->assign('imagen', $image);
             $this->smarty->assign('users', $users);
             if(isset($_SESSION["email"])){
                 $this->smarty->assign('currentUser', $_SESSION["email"]);

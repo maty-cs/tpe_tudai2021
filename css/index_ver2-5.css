@@ -270,6 +270,16 @@ section.tablaProductos table tbody#agregado tr td a.nombreProducto{
     margin-top: 0.5vh;
 }
 
+.imagenDB{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#imgProduct.precio{
+    margin: 1vh;
+}
+
 /* Envíos */
 
 .envios{
