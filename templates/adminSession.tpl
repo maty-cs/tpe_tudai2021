@@ -1,4 +1,4 @@
-{include file="../templates/header-nav.tpl"}
+{include file="../templates/header.tpl"}
 
 <section class="conteinerList">
     <h1>Lista de usuarios de la página</h1>

@@ -1,10 +1,11 @@
-{include file="../templates/header-nav.tpl"}
+{include file="../templates/header.tpl"}
 <section class="horario">
 <h2 class="subtitulo">{$producto->nombre}</h2>
 <div class="contenedor-lista">
     <div class="listaHorario">
         <div class="detalle">
             <ul class="dias">
+                <li >Código de producto: <p id="productoID">{$producto->id_product}</p></li>
                 <li>¿Contiene gluten? 
                 {if $producto->gluten}
                     Sí
@@ -27,6 +28,7 @@
                 {/foreach}
                 <p><a href="home" > Volver a Home</a></p>
             </ul>
+            {include file="../templates/vue/comentariosBody.tpl"}
         </div>
     </div>
 </div>

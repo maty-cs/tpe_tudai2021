@@ -21,6 +21,22 @@
             }
         }
 
+        function obtenerComentariosDetail($params){
+            $id = $params[':ID'];
+            if($id != null){
+                $comentarios = $this->model->getComentarios($id);
+                if($comentarios){
+                    return $this->view->response($comentarios, 200);
+                }
+                else{
+                    return $this->view->response(null, 404);
+                }
+            }
+            else{
+                return $this->view->response(null, 404);
+            }
+        }
+
         function obtenerComentario($params = null){
             $id = $params[':ID'];
             $comentario = $this->model->getComentario($id);
@@ -48,7 +64,7 @@
             $body = $this->getBody();
 
             if($body != null && $body != []){
-                $id = $this->model->insertComentario($body->usuario, $body->comentario, $body->puntaje, $body->fecha);
+                $id = $this->model->insertComentario($body->usuario, $body->comentario, $body->id_product, $body->puntaje, $body->fecha);
                 if($id != 0 && $id != null){
                     return $this->view->response("comentario creado correctamente", 200);
                 }

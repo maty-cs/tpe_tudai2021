@@ -6,9 +6,16 @@
             $this->db = new PDO('mysql:host=localhost;'.'dbname=tpe_web2;charset=utf8', 'root', '');
         }
         
-        function getComentarios(){
-            $sentencia = $this->db->prepare( "SELECT * FROM comentarios");
-            $sentencia->execute();
+        function getComentarios($idProduct = null){
+            if($idProduct != null){
+                $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product = ?");
+                $sentencia->execute(array($idProduct));
+            }
+            else{
+                $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product IS NULL");
+                $sentencia->execute();
+            }
+            
             $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
             return $comentarios;
         }
@@ -25,9 +32,9 @@
             $sentencia->execute(array($id));
         }
 
-        function insertComentario($usuario, $comentario, $puntaje, $fecha){
-            $sentencia = $this->db->prepare("INSERT INTO comentarios(usuario, comentario, puntaje, fecha) VALUES(?, ?, ?, ?)");
-            $sentencia->execute(array($usuario, $comentario, $puntaje, $fecha));
+        function insertComentario($usuario, $comentario, $id_product, $puntaje, $fecha){
+            $sentencia = $this->db->prepare("INSERT INTO comentarios(usuario, comentario, id_product, puntaje, fecha) VALUES(?, ?, ?, ?, ?)");
+            $sentencia->execute(array($usuario, $comentario, $id_product, $puntaje, $fecha));
             return $this->db->lastInsertId();
         }
 

@@ -1,4 +1,4 @@
-{include file="../templates/header-nav.tpl"}
+{include file="../templates/header.tpl"}
 
 <section class="formulario">
     <h2 class="subtitulo">Inicia Sesión</h2>

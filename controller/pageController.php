@@ -63,6 +63,7 @@
         function viewProduct($id){
             $product = $this->model->getDetail($id);
             $categorias = $this->model->getCategorias();
-            $this->view->showDetail($product, $categorias);
+            $users = $this->model->getUsers();
+            $this->view->showDetail($product, $categorias, $users);
         }
     }

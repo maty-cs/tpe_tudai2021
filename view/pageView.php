@@ -17,16 +17,20 @@
                 $this->smarty->assign('currentUser', $_SESSION["email"]);
             }
             
-                $this->smarty->assign('titulo', "Home");
-                $this->smarty->display('./templates/bodyProductos.tpl');
+            $this->smarty->assign('titulo', "Home");
+            $this->smarty->display('./templates/bodyProductos.tpl');
         }
 
-        function showDetail($producto, $categorias){
+        function showDetail($producto, $categorias, $users){
             $this->smarty->assign('producto', $producto);
             $this->smarty->assign('categorias', $categorias);
+            $this->smarty->assign('users', $users);
+            if(isset($_SESSION["email"])){
+                $this->smarty->assign('currentUser', $_SESSION["email"]);
+            }
             $this->smarty->assign('titulo', $producto->nombre);
             $this->smarty->display('templates/productDetail.tpl');
-         }
+        }
 
         function showHomeLocation(){
             header("Location: ".BASE_URL."home");

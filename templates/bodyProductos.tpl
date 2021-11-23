@@ -1,4 +1,4 @@
-{include file="../templates/header-nav.tpl"}
+{include file="../templates/header.tpl"}
 
 <section>
     <h2 class="subtitulo">Nuestros Productos</h2>

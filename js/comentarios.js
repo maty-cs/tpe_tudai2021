@@ -21,36 +21,81 @@ async function getComentarios(){
     }
 }
 
+async function getComentariosDetail(id){
+    try {
+        let response = await fetch(API_URL+'detail/'+id);
+        let json = await response.json();
+        conteiner.comentarios = json;
+    } 
+    catch (error) {
+        console.log("ERROR: "+error);
+    }
+}
+
 async function postComment() {
     let user = document.getElementById("user").innerHTML;
     let comment = document.getElementById("userComment").value;
     let review = document.getElementById("userReview").value;
     let date = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    let id = document.getElementById("productoID").innerHTML;
+    console.log(id)
         
     if(user != null && user != "" && comment != null && comment != "" && review != null && review != ""){
-        let item = {
-            usuario: user,
-            comentario: comment,
-            puntaje: review,
-            fecha: date
-        }
-    
-        try {
-            let response = await fetch(API_URL, {
-                "method": "POST",
-                "headers": {"Content-type": "application/json"},
-                "body": JSON.stringify(item)
-            });
-            if(response.ok){
-                getComentarios();
+        if(id == null){
+            let item = {
+                usuario: user,
+                comentario: comment,
+                id_product: null,
+                puntaje: review,
+                fecha: date
             }
-            else{
-                console.log("error al crear comentario");
+            console.log(id)
+            
+            try {
+                let response = await fetch(API_URL, {
+                    "method": "POST",
+                    "headers": {"Content-type": "application/json"},
+                    "body": JSON.stringify(item)
+                });
+                if(response.ok){
+                    getComentarios();
+                }
+                else{
+                    console.log("error al crear comentario");
+                }
+                
             }
-    
+            catch (error) {
+                console.log(error);
+            }
         }
-        catch (error) {
-         console.log(error);
+        else{
+            let item = {
+                usuario: user,
+                comentario: comment,
+                id_product: id,
+                puntaje: review,
+                fecha: date
+            }
+            console.log(id)
+            
+            try {
+                let response = await fetch(API_URL, {
+                    "method": "POST",
+                    "headers": {"Content-type": "application/json"},
+                    "body": JSON.stringify(item)
+                });
+                if(response.ok){
+                    getComentariosDetail(id);
+                }
+                else{
+                    console.log("error al crear comentario");
+                }
+                
+            }
+            catch (error) {
+                console.log(error);
+            }   
         }
     }
     else{
@@ -94,6 +139,12 @@ function addEventoDelete(){
 }
 
 if(document.title = "Home"){
-    window.onload = getComentarios();
+    if(document.getElementById("productoID")){
+        let id = document.getElementById("productoID").innerHTML;
+        window.onload = getComentariosDetail(id);  
+    }
+    else{
+        window.onload = getComentarios();
+    }
     setTimeout(addEventoDelete, 1000);
 }

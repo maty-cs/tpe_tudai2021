@@ -2,7 +2,6 @@
   require_once('controller/pageController.php');
   require_once('controller/sessionController.php');
   require_once('controller/categoriaController.php');
-  //require_once('api/apiController.php');
 
 
   define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -21,16 +20,10 @@
   $pageController = new pageController();
   $sessionController = new sessionController();
   $categoriaController = new categoriaController();
-  //$apiController = new apiController();
 
 
   //Camino de la acción
   switch($params[0]){
-
-    //Sección de comentarios
-    /*case 'createComment':
-      $apiController->crearComentario();
-      break;*/
 
     //Sesión
     case 'signIn':
