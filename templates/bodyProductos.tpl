@@ -146,13 +146,23 @@
         </tbody>
     </table>
     <nav><ul class="pageClass">
-        <li><a href="{}">Anterior</a></li>
+        {if $index>$pages}            
+            <li><a href="home/{$index-1}">Anterior</a></li>
+        {else}
+            <li><a href="home/{$index}">Anterior</a></li>
+        {/if}
+
         {for $pagina=0 to $pages-1}
             <li>
                 <a href="home/{$pagina+1}">{$pagina+1}</a>
             </li>
         {/for}
-        <li><a href="{}">Siguiente</a></li>
+
+        {if $index<$pages}            
+            <li><a href="home/{$index+1}">Siguiente</a></li>
+        {else}
+            <li><a href="home/{$index}">Siguiente</a></li>
+        {/if}
     </ul></nav>
 </section>
 

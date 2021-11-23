@@ -19,7 +19,7 @@
             $users = $this->model->getUsers();
             $paginas = $this->countPaginas();
             $productToShow = $this->productsToShow($currentPage);
-            $this->view->printPage($productToShow, $categorias, $users, $paginas);
+            $this->view->printPage($productToShow, $categorias, $users, $paginas, $currentPage);
         }
 
         function productsToShow($actualPage){
