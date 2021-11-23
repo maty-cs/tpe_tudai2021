@@ -33,10 +33,10 @@
                 }
 
                 $filePath = "../img/" . uniqid("", true).".".strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
-                move_uploaded_file($_FILES["imagen"]["tmp_name"], $filePath);
+                move_uploaded_file($_FILES["imagen"]["tmp_name"], $filePath).$_FILES['imagen']['name'];
 
 
-                $this->model->insertProduct($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria'], $_FILES['imagen']['tmp_name']);
+                $this->model->insertProduct($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria'], $filePath);
                 $this->view->showHomeLocation();
             }
         }
@@ -51,13 +51,19 @@
         function updateProduct(){
             $this->authHelper->checkAdmin();
 
-            if(!isset($_POST['gluten'])){
-                $gluten = 0;
-            }else{
-                $gluten = 1;
+            if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png"){
+                if(!isset($_POST['gluten'])){
+                    $gluten = 0;
+                }else{
+                    $gluten = 1;
+                }
+
+                $filePath = "../img/" . uniqid("", true).".".strtolower(pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION));
+                move_uploaded_file($_FILES["imagen"]["tmp_name"], $filePath).$_FILES['imagen']['name'];
+
+                $this->model->updateProductFromDB($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria'], $filePath, $_POST['id']);
+                $this->view->showHomeLocation();
             }
-            $this->model->updateProductFromDB($_POST['nombre'], $gluten, $_POST['precio'], $_POST['categoria'], $_POST['id']);
-            $this->view->showHomeLocation();
         }
 
         function filtroProductos(){

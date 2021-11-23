@@ -66,9 +66,12 @@
             $sentenciaIMG->execute(array($id));
         }
 
-        function updateProductFromDB($nombre, $gluten, $precio, $categoria, $id){
+        function updateProductFromDB($nombre, $gluten, $precio, $categoria, $image, $id){
             $sentencia = $this->db->prepare("UPDATE  productos  SET  nombre = ?, gluten = ?, precio = ?, categoria = ? WHERE id_product=?");
             $sentencia->execute(array($nombre, $gluten, $precio, $categoria, $id));
+
+            $sentenciaIMG = $this->db->prepare("UPDATE  images  SET  path = ? WHERE id_product=?");
+            $sentenciaIMG->execute(array($image, $id));
         }
 
         function getDetail($id){

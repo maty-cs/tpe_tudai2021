@@ -50,7 +50,7 @@
             </div>
         </form>
         
-        <form class="opciones" action="updateProduct" method="post">
+        <form class="opciones" action="updateProduct" method="post" enctype="multipart/form-data">
             <div class="nombreProductos">
                 <label for="nombre">Modificar Nombre del Producto</label>
                 <input type="text" name="nombre" class="nombreProducto">
@@ -63,7 +63,7 @@
 
             <div class="imagenDB">
                 <label for="imagen">Edite la imagen</label>
-                <input class="precio" type="file" name="imagen" id="imgProduct">
+                <input class="precio" type="file" name="imagen">
             </div>
         
             <div class="precioProductos">
