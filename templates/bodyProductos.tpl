@@ -142,9 +142,18 @@
                         <td>${$product->precio}</td> 
                     </tr>
                 {/foreach}
-            
+                
         </tbody>
     </table>
+    <nav><ul class="pageClass">
+        <li><a href="{}">Anterior</a></li>
+        {for $pagina=0 to $pages-1}
+            <li>
+                <a href="home/{$pagina+1}">{$pagina+1}</a>
+            </li>
+        {/for}
+        <li><a href="{}">Siguiente</a></li>
+    </ul></nav>
 </section>
 
 {if isset($users)}

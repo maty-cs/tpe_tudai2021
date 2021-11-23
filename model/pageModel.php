@@ -27,6 +27,16 @@
             $productos = $sentencia->fetchAll(PDO::FETCH_OBJ);
             return $productos;
         }
+
+        function getProductsPage($inicio, $fin){
+            $sentencia = $this->db->prepare( 'SELECT * FROM productos LIMIT :iniciar, :finalizar');
+            $sentencia->bindParam('iniciar', $inicio, PDO::PARAM_INT);
+            $sentencia->bindParam('finalizar', $fin, PDO::PARAM_INT);
+            $sentencia->execute();
+            $products = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+            return $products;
+        }
         
         function getCategorias(){
             $sentencia = $this->db->prepare( "SELECT * FROM categorias");

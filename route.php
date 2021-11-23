@@ -58,7 +58,12 @@
 
     //Tabla Productos
     case 'home':
-      $pageController->showPage($params[0]);
+      if(empty($params[1])){
+        $pageController->showPage(1);
+      }
+      else{
+        $pageController->showPage($params[1]);  
+      }
     break;
     case 'insertProduct':
       $pageController->createProduct();

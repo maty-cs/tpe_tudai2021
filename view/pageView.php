@@ -8,10 +8,12 @@
             $this->smarty = new Smarty();
         }
 
-        function printPage($products, $categorias, $users){
+        function printPage($products, $categorias, $users, $pages){
             $this->smarty->assign('products', $products);
             $this->smarty->assign('categorias', $categorias);
             $this->smarty->assign('users', $users);
+            $this->smarty->assign('pages', $pages);
+
 
             if (!empty($_SESSION["email"])) {
                 $this->smarty->assign('currentUser', $_SESSION["email"]);

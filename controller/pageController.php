@@ -14,12 +14,36 @@
             $this->authHelper = new authHelper();
         }
 
-        function showPage(){
-            $defaultCategoria = 'Todas';
-            $products = $this->model->getProducts($defaultCategoria);
+        function showPage($currentPage){
             $categorias = $this->model->getCategorias();
             $users = $this->model->getUsers();
-            $this->view->printPage($products, $categorias, $users);
+            $paginas = $this->countPaginas();
+            $productToShow = $this->productsToShow($currentPage);
+            $this->view->printPage($productToShow, $categorias, $users, $paginas);
+        }
+
+        function productsToShow($actualPage){
+            $cantXPage = 3;
+            $start = ($actualPage-1)*$cantXPage;
+
+            $productsToShow = $this->model->getProductsPage($start, $cantXPage);
+
+            return $productsToShow;
+        }
+
+        function countPaginas($categoria = null){
+            if($categoria != null){
+                $sentencia = $this->model->getProducts($categoria);
+            }
+            else{
+                $sentencia = $this->model->getProducts('Todas');
+            }
+            $cantidadObjetos = count($sentencia);
+            $cantXPage = 3;
+            $paginas = ($cantidadObjetos/$cantXPage);
+            $paginas = ceil($paginas);
+
+            return $paginas;
         }
 
         function createProduct(){
@@ -70,7 +94,9 @@
             $products = $this->model->getProducts($_POST['categorias']);
             $categorias = $this->model->getCategorias();
             $user = $this->model->getUsers();
-            $this->view->printPage($products, $categorias, $user);
+            $paginas = $this->countPaginas($_POST['categorias']);
+
+            $this->view->printPage($products, $categorias, $user, $paginas);
         }
 
         function viewProduct($id){
