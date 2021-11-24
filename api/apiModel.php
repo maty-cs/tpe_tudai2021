@@ -21,7 +21,6 @@
         }
 
         function getComentariosByPuntos($puntos, $id = null){
-
         }
 
         function getComentario($id){

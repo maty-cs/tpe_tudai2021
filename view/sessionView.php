@@ -21,7 +21,7 @@ class sessionView{
     }
 
     function showHome(){
-        header("Location: ".BASE_URL."home");
+        header("Location: ".BASE_URL."home/1");
     }
 
     function showSessions($users){

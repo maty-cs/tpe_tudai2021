@@ -14,7 +14,7 @@
             <a href="" class="icono-redes">
                 <i class='bx bxl-instagram'></i>
             </a>
-    </div>
+        </div>
     </div>
     <div class="linea"></div>
 </footer>
