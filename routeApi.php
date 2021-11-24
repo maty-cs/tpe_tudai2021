@@ -12,7 +12,8 @@ $router->addRoute('comentarios/:ID', 'GET', 'apiController', 'obtenerComentario'
 $router->addRoute('comentarios/:ID', 'DELETE', 'apiController', 'eliminarComentario');
 $router->addRoute('comentarios/:ID', 'PUT', 'apiController', 'modificarComentario');
 $router->addRoute('comentarios/detail/:ID', 'GET', 'apiController', 'obtenerComentariosDetail');
-$router->addRoute('comentarios/detail/:ID', 'GET', 'apiController', 'obtenerComentariosDetail');
+$router->addRoute('comentarios/order/0', 'GET', 'apiController', 'orderComentariosByPuntaje');
+$router->addRoute('comentarios/order/:ID', 'GET', 'apiController', 'orderComentariosByPuntaje');
 
 
 // rutea
