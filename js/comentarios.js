@@ -23,17 +23,41 @@ async function getComentarios(){
 
 async function getCommentsOrdered(){
     let order = document.getElementById("order").value;
-    console.log(order);
-    try {
-        let response = await fetch(API_URL+'puntaje/'+0+'/'+order);
-        let json = await response.json();
-        conteiner.comentarios = json;
-    } 
-    catch (error) {
-        console.log("ERROR: "+error);
-    }
+    let productID = document.getElementById("productoID").innerHTML;
 
-}
+    if(productID != null){
+        try {
+            if(order != 'none'){
+                let response = await fetch(API_URL+'puntaje/'+productID+'/'+order);
+                let json = await response.json();
+                conteiner.comentarios = json;
+            }
+            else{
+                getComentariosDetail(productID);
+            }
+    
+        } 
+        catch (error) {
+            console.log("ERROR: "+error);
+        }
+    }
+    else{
+        try {
+            if(order != 'none'){
+                let response = await fetch(API_URL+'puntaje/'+0+'/'+order);
+                let json = await response.json();
+                conteiner.comentarios = json;
+            }
+            else{
+                getComentarios();
+            }
+    
+        } 
+        catch (error) {
+            console.log("ERROR: "+error);
+        }        
+    }
+}  
 
 async function getComentariosDetail(id){
     try {
@@ -73,6 +97,8 @@ async function postComment() {
                 });
                 if(response.ok){
                     getComentarios();
+                    setTimeout(addEventos, 1000)
+
                 }
                 else{
                     console.log("error al crear comentario");
@@ -101,6 +127,7 @@ async function postComment() {
                 });
                 if(response.ok){
                     getComentariosDetail(id);
+                    setTimeout(addEventos, 1000);
                 }
                 else{
                     console.log("error al crear comentario");
@@ -120,6 +147,7 @@ async function postComment() {
 async function deleteComment(i){
     let btn = document.querySelectorAll(".btn-delete");
     let id = btn[i].nextElementSibling.innerHTML;
+    let product = document.getElementById("productoID").innerHTML;
 
     try {
         let response = await fetch(API_URL+'/'+id, {
@@ -127,7 +155,12 @@ async function deleteComment(i){
         });
         if(response.ok){
             console.log("comentario "+id+" eliminado");
-            getComentarios();
+            if(product != null){
+                getComentariosDetail(product);
+            }
+            else{
+                getComentarios();
+            }
         }
         else{
             console.log("error al eliminar comentario");

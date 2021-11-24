@@ -45,13 +45,13 @@
                 $orden = 'ASC';
             }
             
-            if(!empty($params[':ID']) && !isset($params[':ID']) && $params[':ID'] == NULL){
+            if(!empty($params[':ID']) || !isset($params[':ID']) || $params[':ID'] != NULL){
                 $id = $params[':ID'];
             }
             else{
                 $id = 0;
             }
-            if($id != 0 && !isset($id)){
+            if($id != 0){
                 $comentarios = $this->model->getComentariosByPuntaje($orden, $id);
                 if($comentarios){
                     return $this->view->response($comentarios, 200);

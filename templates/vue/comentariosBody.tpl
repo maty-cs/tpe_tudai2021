@@ -34,7 +34,7 @@
             <form class="seccionFiltro">
                 <label for="categorias">Filtrar por Puntaje</label>
                 <select name="orden" id="order" class="filtro">
-                    <option value="DESC">---</option>
+                    <option value="none">---</option>
                     <option value="ASC">Ascendente</option>
                     <option value="DESC">Descendiente</option>
                 </select>
@@ -175,15 +175,15 @@
         {literal}
     </div>
         <section class="conteinerFilter">
-            <div class="seccionFiltro">
-                <label for="categorias">Filtrar por Puntaje</label>
-                <select name="orden" id="order" class="filtro">
-                    <option value="null">---</option>
-                    <option value="asc">Ascendente</option>
-                    <option value="desc">Descendiente</option>
-                </select>
-                <button type="submit" class="btn-comment" id="btnFilter">Filtrar</button>
-            </div>
+        <form class="seccionFiltro">
+            <label for="categorias">Filtrar por Puntaje</label>
+            <select name="orden" id="order" class="filtro">
+                <option value="none">---</option>
+                <option value="ASC">Ascendente</option>
+                <option value="DESC">Descendiente</option>
+            </select>
+            <button type="submit" class="btn-comment" id="btnFilter">Filtrar</button>
+        </form>
         </section>
         <div class="bodyComentario">
             <ul>    
