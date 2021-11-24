@@ -21,6 +21,20 @@ async function getComentarios(){
     }
 }
 
+async function getCommentsOrdered(){
+    let order = document.getElementById("order").value;
+    console.log(order);
+    try {
+        let response = await fetch(API_URL+'order/'+0);
+        let json = await response.json();
+        conteiner.comentarios = json;
+    } 
+    catch (error) {
+        console.log("ERROR: "+error);
+    }
+
+}
+
 async function getComentariosDetail(id){
     try {
         let response = await fetch(API_URL+'detail/'+id);
@@ -124,17 +138,23 @@ async function deleteComment(i){
     }
 }
 
-function addEventoDelete(){
+function addEventos(){
     if(document.querySelector(".btn-delete") != null){
         let btnDelete = document.querySelectorAll(".btn-delete");
-        console.log(btnDelete.length);
         for (let i = 0; i < btnDelete.length; i++) {
             btnDelete[i].addEventListener("click", function(e){
                 e.preventDefault();
                deleteComment(i);
-               setTimeout(addEventoDelete, 1000);
+               setTimeout(addEventos, 1000);
             });
         }
+    }
+    if(document.getElementById("btnFilter") != null){
+        let btnFilter = document.getElementById("btnFilter");
+        btnFilter.addEventListener("click", function(e){
+            e.preventDefault();
+            getCommentsOrdered();
+        });
     }
 }
 
@@ -146,5 +166,5 @@ if(document.title = "Home"){
     else{
         window.onload = getComentarios();
     }
-    setTimeout(addEventoDelete, 1000);
+    setTimeout(addEventos, 1000);
 }

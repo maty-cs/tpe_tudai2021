@@ -20,6 +20,20 @@
             return $comentarios;
         }
 
+        function getComentariosByPuntaje($idProduct = null){
+            if($idProduct != null){
+                $sentencia = $this->db->prepare( "SELECT * FROM `comentarios` WHERE `id_product`=? ORDER BY `puntaje` DESC");
+                $sentencia->execute(array($idProduct));
+            }
+            else{
+                $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product IS NULL  ORDER BY `puntaje` DESC");
+                $sentencia->execute();
+            }
+            
+            $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
+            return $comentarios;
+        }
+
         function getComentario($id){
             $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_comentario=?");
             $sentencia->execute(array($id));

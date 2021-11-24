@@ -26,10 +26,22 @@
             </div>
         </div>
 
+    </div>
+        <section class="conteinerFilter">
+            <div class="seccionFiltro">
+                <label for="categorias">Filtrar por Puntaje</label>
+                <select name="orden" id="order" class="filtro">
+                    <option value="null">---</option>
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendiente</option>
+                </select>
+                <button type="submit" class="btn-comment" id="btnFilter">Filtrar</button>
+            </div>
+        </section>
+
         {foreach from=$users item=user}
             {if $currentUser = $user->email && $user->admin == 1}
                 {literal}
-                    </div>
                         <div class="bodyComentario">
                             <ul>    
                                 <li v-for="comentario in comentarios" class="caja-comentario">
@@ -159,6 +171,17 @@
     {else}   
         {literal}
     </div>
+        <section class="conteinerFilter">
+            <div class="seccionFiltro">
+                <label for="categorias">Filtrar por Puntaje</label>
+                <select name="orden" id="order" class="filtro">
+                    <option value="null">---</option>
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendiente</option>
+                </select>
+                <button type="submit" class="btn-comment" id="btnFilter">Filtrar</button>
+            </div>
+        </section>
         <div class="bodyComentario">
             <ul>    
                 <li v-for="comentario in comentarios" class="caja-comentario">

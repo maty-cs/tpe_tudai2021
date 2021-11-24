@@ -37,6 +37,33 @@
             }
         }
 
+        function orderComentariosByPuntaje($params = null){
+            if(!empty($params)){
+                $id = $params[':ID'];
+            }
+            else{
+                $id = 0;
+            }
+            if($id != 0 && !isset($id)){
+                $comentarios = $this->model->getComentariosByPuntaje($id);
+                if($comentarios){
+                    return $this->view->response($comentarios, 200);
+                }
+                else{
+                    return $this->view->response(null, 404);
+                }
+            }
+            else{
+                $comentarios = $this->model->getComentariosByPuntaje();
+                if($comentarios){
+                    return $this->view->response($comentarios, 200);
+                }
+                else{
+                    return $this->view->response(null, 404);
+                }          
+            }
+        }
+
         function obtenerComentario($params = null){
             $id = $params[':ID'];
             $comentario = $this->model->getComentario($id);
