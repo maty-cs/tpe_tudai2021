@@ -2,7 +2,7 @@
 {literal}
     <section id="containerComentarios" class="comentarios">
     <div class="comentario-head">
-    <h1>{{titulo}}</h1>
+        <h1>{{titulo}}</h1>
 {/literal}
 
     {if isset($currentUser)}
@@ -27,8 +27,8 @@
         </div>
 
     </div>
+   
         <section class="conteinerFilter">
-
             <form class="seccionFiltro">
                 <label for="categorias">Ordenar por Puntaje</label>
                 <select name="orden" id="order" class="filtro">
@@ -36,9 +36,8 @@
                     <option value="ASC">Ascendente</option>
                     <option value="DESC">Descendiente</option>
                 </select>
-                <button type="submit" class="btn-comment" id="btnFilter">Filtrar</button>
+                <button type="submit" class="btn-comment" id="btnFilter">ordenar</button>
             </form>
-
             <form class="seccionFiltro">
                 <label for="categorias">Filtrar por Puntaje</label>
                 <select name="points" id="points" class="filtro">
@@ -184,16 +183,29 @@
         {literal}
     </div>
         <section class="conteinerFilter">
-        <form class="seccionFiltro">
-            <label for="categorias">Filtrar por Puntaje</label>
-            <select name="orden" id="order" class="filtro">
-                <option value="none">---</option>
-                <option value="ASC">Ascendente</option>
-                <option value="DESC">Descendiente</option>
-            </select>
-            <button type="submit" class="btn-comment" id="btnFilter">Filtrar</button>
-        </form>
+
+            <form class="seccionFiltro">
+                <label for="categorias">Ordenar por Puntaje</label>
+                <select name="orden" id="order" class="filtro">
+                    <option value="none">---</option>
+                    <option value="ASC">Ascendente</option>
+                    <option value="DESC">Descendiente</option>
+                </select>
+                <button type="submit" class="btn-comment" id="btnFilter">ordenar</button>
+            </form>
+
+            <form class="seccionFiltro">
+                <label for="categorias">Filtrar por Puntaje</label>
+                <select name="points" id="points" class="filtro">
+                    <option value="none">---</option>
+                    {for $i = 0 to 5}
+                        <option value="{$i}">{$i}</option> 
+                    {/for}
+                </select>
+                <button type="submit" class="btn-comment" id="btnPoints">Filtrar</button>
+            </form>
         </section>
+
         <div class="bodyComentario">
             <ul>    
                 <li v-for="comentario in comentarios" class="caja-comentario">

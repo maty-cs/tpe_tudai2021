@@ -505,6 +505,57 @@ section.conteinerFilter{
     display: flex;
 }
 
+.filters{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filterPoints{
+    background-color: #fff6ff;
+    margin-left: 1vh;
+    margin-right: 10vh;
+    margin-bottom: 1vh;
+    padding-top: 1vh;
+    padding-left: 1vh;
+    padding: 5vh;
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #887bac;
+    border-radius: 5%;
+    height: 42vh;
+    align-items: center;
+}
+
+.filterPoints div{
+    display: flex;
+    flex-direction: column;
+}
+
+.filterPoints div.glutenProductos{
+    display: flex;
+    flex-direction: row;
+}
+
+form.filterPoints div label + input{
+    margin-bottom: 2vh;
+    margin-left: 2vh;
+}
+
+.filterPoints label#glutenProd{
+    margin-left: 2vh;
+}
+
+.filterPoints .btn-comment{
+    padding: 1vh;
+    width: 8vh;
+    height: 5vh;
+    margin: 2vh;
+    margin-left: 5vh;
+    font-size: 2.2vh;
+}
+
 /*.comentario-head span{
     font-size: 3.2rem;
     font-weight: 500;

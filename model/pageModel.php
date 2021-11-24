@@ -28,6 +28,13 @@
             return $productos;
         }
 
+        function getProductsFilter($sentence, $execute){
+            $sentencia = $this->db->prepare($sentence);
+            $sentencia->execute($execute);
+            $productos = $sentencia->fetchAll(PDO::FETCH_OBJ);
+            return $productos;
+        }
+
         function getProductsPage($inicio, $fin){
             $sentencia = $this->db->prepare( 'SELECT * FROM productos LIMIT :iniciar, :finalizar');
             $sentencia->bindParam('iniciar', $inicio, PDO::PARAM_INT);

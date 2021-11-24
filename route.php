@@ -72,6 +72,9 @@
     case 'filtrarResultados':
       $pageController->filtroProductos();
     break;
+    case 'filtroAvanzado':
+      $pageController->filtroAvanzado();
+    break;
     case 'viewDetail': 
       $pageController->viewProduct($params[1]); 
     break;

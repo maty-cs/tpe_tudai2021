@@ -103,17 +103,47 @@
         </form>
     {/if}
 {/if}
+<section class="filters">
+    <form action="filtrarResultados" method="post" class="seccionFiltro">
+        <label for="categorias">Filtrar por Categoria</label>
+        <select name="categorias" class="filtro">
+            <option value="Todas">---</option>
+            {foreach from=$categorias item=$categoria}
+                <option value="{$categoria->categoria}">{$categoria->categoria}</option>
+            {/foreach}
+        </select>
+        <button type="submit" id="btnFiltrar">Filtrar</button>
+    </form>
+    <section>
+    <form class="filterPoints" method="POST" action="filtroAvanzado">
+            <h2>Filtro Avanzado</h2>
+        <div class="nombreProductos">
+            <label for="nombre">Nombre del Producto</label>
+            <input type="text" name="nombre" class="nombreProducto">
+        </div>
 
-<form action="filtrarResultados" method="post" class="seccionFiltro">
-    <label for="categorias">Filtrar por Categoria</label>
-    <select name="categorias" class="filtro">
-        <option value="Todas">---</option>
-        {foreach from=$categorias item=$categoria}
-            <option value="{$categoria->categoria}">{$categoria->categoria}</option>
-        {/foreach}
-    </select>
-    <button type="submit" id="btnFiltrar">Filtrar</button>
-</form>
+        <div class="glutenProductos">
+            <input type="checkbox" name="gluten" class="contieneGluten" value="">
+            <label for="gluten" id="glutenProd">Gluten</label>
+        </div>
+
+        <div class="precioProductos">
+            <label for="precio">Ingrese precio del producto</label>
+            <input type="number" name="precio" class="agregarPrecio">
+        </div>
+
+        <div class="nombreProductos">
+            <label for="categoria">Ingrese categoría del producto</label>
+            <select name="categoria" class="filtro">
+                {foreach from=$categorias item=$categoria}
+                    <option value="{$categoria->categoria}">{$categoria->categoria}</option>
+                {/foreach}
+            </select>
+        </div>
+        <button type="submit" class="btn-comment" id="btnFilterAvanzado">Filtrar</button>
+    </form>
+    </section>
+</section>
 
 <section class="tablaProductos">
     <table>

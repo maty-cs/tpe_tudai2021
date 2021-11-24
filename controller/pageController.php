@@ -102,6 +102,57 @@
             $this->view->printPage($products, $categorias, $user, $paginas);
         }
 
+        function filtroAvanzado(){
+            if(isset($_POST)){
+                $execute = array();
+
+                if($_POST['nombre'] != ""){
+                    $nombre = $_POST['nombre'];
+                    $nombreSentence = "nombre = ? AND ";
+                    array_push($execute, $nombre);
+                }
+                else{
+                    $nombreSentence = null;
+                }
+
+                if(isset($_POST['gluten'])){
+                    $gluten = 1;
+                }
+                else{
+                    $gluten = 0;
+                }
+                $glutenSentence = "gluten = ? AND ";
+                array_push($execute, $gluten);
+
+                if(isset($_POST['precio']) && $_POST['precio'] != null && $_POST['precio'] != ""){
+                    $precio = $_POST['precio'];
+                    $precioSentence = "precio = ? AND ";
+                    array_push($execute, $precio);
+                }
+                else{
+                    $precioSentence = null;
+                }
+
+                if(isset($_POST['categoria'])){
+                    $categoria = $_POST['categoria'];
+                    $categoriaSentence = "categoria = ?";
+                    array_push($execute, $categoria);
+                }
+                else{
+                    $categoriaSentence = null;
+                }
+                
+                $sentence = "SELECT * FROM productos WHERE ".$nombreSentence.$glutenSentence.$precioSentence.$categoriaSentence;
+
+                $products = $this->model->getProductsFilter($sentence, $execute);
+                $categorias = $this->model->getCategorias();
+                $user = $this->model->getUsers();
+                $paginas = $this->countPaginas();
+
+                $this->view->printPage($products, $categorias, $user, $paginas);
+            }
+        }
+
         function viewProduct($id){
             $product = $this->model->getDetail($id);
             $image = $this->model->getImage($id);
