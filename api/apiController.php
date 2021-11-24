@@ -43,7 +43,7 @@
             }
         }
         
-        function obtenerComentariosByPuntaje($params = null){
+        function obtenerComentariosByPuntos($params = null){
             if(!empty($params[':puntos'])){
                 $puntos = $params[':puntos'];
                 if(!empty($params[':ID'])){
@@ -53,7 +53,10 @@
                     $id = 0;
                 }
                 if($id != 0){
-                    $comentarios = $this->model->getComentariosByPuntos($puntos, $id);
+                    $sentence = "SELECT * FROM comentarios WHERE puntaje = ? AND id_product = ?";
+                    $execute = $id;
+
+                    $comentarios = $this->model->getComentariosByPuntos($sentence, $execute, $puntos);
                     if($comentarios){
                         return $this->view->response($comentarios, 200);
                     }
@@ -62,7 +65,10 @@
                     }
                 }
                 else{
-                    $comentarios = $this->model->getComentariosByPuntos($puntos);
+                    $sentence = "SELECT * FROM comentarios WHERE puntaje = ? AND id_product IS ?";
+                    $execute = NULL;
+
+                    $comentarios = $this->model->getComentariosByPuntos($sentence, $execute, $puntos);
                     if($comentarios){
                         return $this->view->response($comentarios, 200);
                     }
@@ -76,7 +82,7 @@
             }
         }
 
-        function orderComentariosByPuntaje($params = null){
+        function obtenerComentariosByPuntaje($params = null){
             if(!empty($params[':order'])){
                 $orden = $params[':order'];
             }

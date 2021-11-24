@@ -13,14 +13,18 @@
             return $comentarios;
         }
 
-        function orderComentariosByPuntaje($sentencia, $array){
-            $sentencia = $this->db->prepare($sentencia);
+        function orderComentariosByPuntaje($sentence, $array){
+            $sentencia = $this->db->prepare($sentence);
             $sentencia->execute(array($array));    
             $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
             return $comentarios;
         }
 
-        function getComentariosByPuntos($puntos, $id = null){
+        function getComentariosByPuntos($sentence, $array, $puntos){
+            $sentencia = $this->db->prepare($sentence);
+            $sentencia->execute(array($puntos, $array));    
+            $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
+            return $comentarios;
         }
 
         function getComentario($id){

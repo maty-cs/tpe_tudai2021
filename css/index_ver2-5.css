@@ -502,6 +502,7 @@ section.conteinerFilter{
     margin-left: 5vh;
     margin-top: 2vh;
     margin-bottom: 5vh;
+    display: flex;
 }
 
 /*.comentario-head span{

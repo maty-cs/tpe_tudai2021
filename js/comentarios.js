@@ -71,6 +71,45 @@ async function getComentariosDetail(id){
     }
 }
 
+async function getComentariosPuntos(){
+    let puntos = document.getElementById("points").value;
+
+    if(document.getElementById("productoID") != null){
+        let productID = document.getElementById("productoID").innerHTML;
+
+        try {
+            if(puntos != 'none'){
+                let response = await fetch(API_URL+'puntos/'+productID+'/'+puntos);
+                let json = await response.json();
+                conteiner.comentarios = json;
+            }
+            else{
+                getComentariosDetail(productID);
+            }
+    
+        } 
+        catch (error) {
+            console.log("ERROR: "+error);
+        }
+    }
+    else{
+        try {
+            if(puntos != 'none'){
+                let response = await fetch(API_URL+'puntos/'+0+'/'+puntos);
+                let json = await response.json();
+                conteiner.comentarios = json;
+            }
+            else{
+                getComentarios();
+            }
+    
+        } 
+        catch (error) {
+            console.log("ERROR: "+error);
+        }        
+    } 
+}
+
 async function postComment() {
     let user = document.getElementById("user").innerHTML;
     let comment = document.getElementById("userComment").value;
@@ -188,6 +227,13 @@ function addEventos(){
         btnFilter.addEventListener("click", function(e){
             e.preventDefault();
             getCommentsOrdered();
+        });
+    }
+    if(document.getElementById("btnPoints") != null){
+        let btnPoints = document.getElementById("btnPoints");
+        btnPoints.addEventListener("click", function(e){
+            e.preventDefault();
+            getComentariosPuntos();
         });
     }
 }
