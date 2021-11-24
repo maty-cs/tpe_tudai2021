@@ -12,7 +12,10 @@
         }
 
         function obtenerComentarios(){
-            $comentarios = $this->model->getComentarios();
+            $sentence = "SELECT * FROM comentarios WHERE id_product IS ?";
+            $execute = NULL;
+
+            $comentarios = $this->model->getComentarios($sentence, $execute);
             if($comentarios){
                 return $this->view->response($comentarios, 200);
             }
@@ -24,12 +27,48 @@
         function obtenerComentariosDetail($params){
             $id = $params[':ID'];
             if($id != null){
-                $comentarios = $this->model->getComentarios($id);
+                $sentence = "SELECT * FROM comentarios WHERE id_product = ?";
+                $execute = $id;
+
+                $comentarios = $this->model->getComentarios($sentence, $execute);
                 if($comentarios){
                     return $this->view->response($comentarios, 200);
                 }
                 else{
                     return $this->view->response(null, 404);
+                }
+            }
+            else{
+                return $this->view->response(null, 404);
+            }
+        }
+        
+        function obtenerComentariosByPuntaje($params = null){
+            if(!empty($params[':puntos'])){
+                $puntos = $params[':puntos'];
+                if(!empty($params[':ID'])){
+                    $id = $params[':ID'];
+                }
+                else{
+                    $id = 0;
+                }
+                if($id != 0){
+                    $comentarios = $this->model->getComentariosByPuntos($puntos, $id);
+                    if($comentarios){
+                        return $this->view->response($comentarios, 200);
+                    }
+                    else{
+                        return $this->view->response(null, 404);
+                    }
+                }
+                else{
+                    $comentarios = $this->model->getComentariosByPuntos($puntos);
+                    if($comentarios){
+                        return $this->view->response($comentarios, 200);
+                    }
+                    else{
+                        return $this->view->response(null, 404);
+                    }          
                 }
             }
             else{
@@ -42,7 +81,7 @@
                 $orden = $params[':order'];
             }
             else{
-                $orden = 'ASC';
+                $orden = 'DESC';
             }
             
             if(!empty($params[':ID']) || !isset($params[':ID']) || $params[':ID'] != NULL){
@@ -52,7 +91,16 @@
                 $id = 0;
             }
             if($id != 0){
-                $comentarios = $this->model->getComentariosByPuntaje($orden, $id);
+                switch($orden){
+                    case 'ASC':
+                        $sentence = "SELECT * FROM comentarios WHERE id_product = ? ORDER BY `puntaje` ASC";
+                    break;
+                    case 'DESC':
+                        $sentence =  "SELECT * FROM comentarios WHERE id_product = ? ORDER BY `puntaje` DESC";
+                    break;
+                }
+                $execute = $id;
+                $comentarios = $this->model->orderComentariosByPuntaje($sentence, $execute);
                 if($comentarios){
                     return $this->view->response($comentarios, 200);
                 }
@@ -61,7 +109,16 @@
                 }
             }
             else{
-                $comentarios = $this->model->getComentariosByPuntaje($orden);
+                switch($orden){
+                    case 'ASC':
+                        $sentence = "SELECT * FROM comentarios WHERE id_product IS ? ORDER BY `puntaje` ASC";
+                    break;
+                    case 'DESC':
+                        $sentence = "SELECT * FROM comentarios WHERE id_product IS ? ORDER BY `puntaje` DESC";
+                    break;
+                }
+                $execute = NULL;
+                $comentarios = $this->model->orderComentariosByPuntaje($sentence, $execute);
                 if($comentarios){
                     return $this->view->response($comentarios, 200);
                 }

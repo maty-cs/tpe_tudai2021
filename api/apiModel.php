@@ -6,46 +6,22 @@
             $this->db = new PDO('mysql:host=localhost;'.'dbname=tpe_web2;charset=utf8', 'root', '');
         }
         
-        function getComentarios($idProduct = null){
-            if($idProduct != null){
-                $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product = ?");
-                $sentencia->execute(array($idProduct));
-            }
-            else{
-                $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product IS NULL");
-                $sentencia->execute();
-            }
-            
+        function getComentarios($sentence, $execute){
+            $sentencia = $this->db->prepare($sentence);
+            $sentencia->execute(array($execute));      
             $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
             return $comentarios;
         }
 
-        function getComentariosByPuntaje($orden, $idProduct = null){
-            if($idProduct != null){
-                switch($orden){
-                    case 'ASC':
-                        $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product = ? ORDER BY `puntaje` ASC");
-                    break;
-                    case 'DESC':
-                        $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product = ? ORDER BY `puntaje` DESC");
-                    break;
-                }
-                $sentencia->execute(array($idProduct));
-            }
-            else{
-                switch($orden){
-                    case 'ASC':
-                        $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product IS NULL ORDER BY `puntaje` ASC");
-                    break;
-                    case 'DESC':
-                        $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product IS NULL ORDER BY `puntaje` DESC");
-                    break;
-                }
-                $sentencia->execute();
-            }
-            
+        function orderComentariosByPuntaje($sentencia, $array){
+            $sentencia = $this->db->prepare($sentencia);
+            $sentencia->execute(array($array));    
             $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
             return $comentarios;
+        }
+
+        function getComentariosByPuntos($puntos, $id = null){
+
         }
 
         function getComentario($id){

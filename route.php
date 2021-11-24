@@ -11,7 +11,7 @@
     $action = $_GET['action'];
   }  
   else{
-    $action = 'home';
+    $action = 'home/1';
   }
 
   //Crea el parámetro
@@ -58,12 +58,7 @@
 
     //Tabla Productos
     case 'home':
-      if(empty($params[1])){
-        $pageController->showPage(1);
-      }
-      else{
-        $pageController->showPage($params[1]);  
-      }
+      $pageController->showPage($params[1]);  
     break;
     case 'insertProduct':
       $pageController->createProduct();

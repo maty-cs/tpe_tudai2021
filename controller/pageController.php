@@ -15,6 +15,9 @@
         }
 
         function showPage($currentPage){
+            if(empty($currentPage)){
+                $currentPage = 0;
+            }
             $categorias = $this->model->getCategorias();
             $users = $this->model->getUsers();
             $paginas = $this->countPaginas();

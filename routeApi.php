@@ -13,6 +13,7 @@ $router->addRoute('comentarios/:ID', 'DELETE', 'apiController', 'eliminarComenta
 $router->addRoute('comentarios/:ID', 'PUT', 'apiController', 'modificarComentario');
 $router->addRoute('comentarios/detail/:ID', 'GET', 'apiController', 'obtenerComentariosDetail');
 $router->addRoute('comentarios/puntaje/:ID/:order', 'GET', 'apiController', 'orderComentariosByPuntaje');
+$router->addRoute('comentarios/puntaje/:ID/:puntos', 'GET', 'apiController', 'obtenerComentariosByPuntaje');
 
 
 // rutea

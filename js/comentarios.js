@@ -23,9 +23,10 @@ async function getComentarios(){
 
 async function getCommentsOrdered(){
     let order = document.getElementById("order").value;
-    let productID = document.getElementById("productoID").innerHTML;
 
-    if(productID != null){
+    if(document.getElementById("productoID") != null){
+        let productID = document.getElementById("productoID").innerHTML;
+
         try {
             if(order != 'none'){
                 let response = await fetch(API_URL+'puntaje/'+productID+'/'+order);
