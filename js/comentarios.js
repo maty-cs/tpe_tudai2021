@@ -25,7 +25,7 @@ async function getCommentsOrdered(){
     let order = document.getElementById("order").value;
     console.log(order);
     try {
-        let response = await fetch(API_URL+'order/'+0);
+        let response = await fetch(API_URL+'puntaje/'+0+'/'+order);
         let json = await response.json();
         conteiner.comentarios = json;
     } 

@@ -38,14 +38,21 @@
         }
 
         function orderComentariosByPuntaje($params = null){
-            if(!empty($params)){
+            if(!empty($params[':order'])){
+                $orden = $params[':order'];
+            }
+            else{
+                $orden = 'ASC';
+            }
+            
+            if(!empty($params[':ID']) && !isset($params[':ID']) && $params[':ID'] == NULL){
                 $id = $params[':ID'];
             }
             else{
                 $id = 0;
             }
             if($id != 0 && !isset($id)){
-                $comentarios = $this->model->getComentariosByPuntaje($id);
+                $comentarios = $this->model->getComentariosByPuntaje($orden, $id);
                 if($comentarios){
                     return $this->view->response($comentarios, 200);
                 }
@@ -54,7 +61,7 @@
                 }
             }
             else{
-                $comentarios = $this->model->getComentariosByPuntaje();
+                $comentarios = $this->model->getComentariosByPuntaje($orden);
                 if($comentarios){
                     return $this->view->response($comentarios, 200);
                 }

@@ -20,13 +20,27 @@
             return $comentarios;
         }
 
-        function getComentariosByPuntaje($idProduct = null){
+        function getComentariosByPuntaje($orden, $idProduct = null){
             if($idProduct != null){
-                $sentencia = $this->db->prepare( "SELECT * FROM `comentarios` WHERE `id_product`=? ORDER BY `puntaje` DESC");
+                switch($orden){
+                    case 'ASC':
+                        $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product = ? ORDER BY `puntaje` ASC");
+                    break;
+                    case 'DESC':
+                        $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product = ? ORDER BY `puntaje` DESC");
+                    break;
+                }
                 $sentencia->execute(array($idProduct));
             }
             else{
-                $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product IS NULL  ORDER BY `puntaje` DESC");
+                switch($orden){
+                    case 'ASC':
+                        $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product IS NULL ORDER BY `puntaje` ASC");
+                    break;
+                    case 'DESC':
+                        $sentencia = $this->db->prepare( "SELECT * FROM comentarios WHERE id_product IS NULL ORDER BY `puntaje` DESC");
+                    break;
+                }
                 $sentencia->execute();
             }
             

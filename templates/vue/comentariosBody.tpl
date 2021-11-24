@@ -28,15 +28,18 @@
 
     </div>
         <section class="conteinerFilter">
-            <div class="seccionFiltro">
+            {if !isset($index)}
+                {$index = 0}
+            {/if}
+            <form class="seccionFiltro">
                 <label for="categorias">Filtrar por Puntaje</label>
                 <select name="orden" id="order" class="filtro">
-                    <option value="null">---</option>
-                    <option value="asc">Ascendente</option>
-                    <option value="desc">Descendiente</option>
+                    <option value="DESC">---</option>
+                    <option value="ASC">Ascendente</option>
+                    <option value="DESC">Descendiente</option>
                 </select>
                 <button type="submit" class="btn-comment" id="btnFilter">Filtrar</button>
-            </div>
+            </form>
         </section>
 
         {foreach from=$users item=user}
