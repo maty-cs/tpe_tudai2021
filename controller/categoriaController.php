@@ -16,9 +16,13 @@ class categoriaController{
 
     function createCategoria(){
         $this->authHelper->checkAdmin();
-
-        $this->model->insertCategoria($_POST['categoria'], $_POST['descripcion'], $_POST['conservacion'], $_POST['tiempoPreparacion']);
-        $this->view->showHomeLocation();
+        if(isset($_POST['categoria'], $_POST['descripcion'], $_POST['conservacion'], $_POST['tiempoPreparacion'])){
+            $this->model->insertCategoria($_POST['categoria'], $_POST['descripcion'], $_POST['conservacion'], $_POST['tiempoPreparacion']);
+            $this->view->showHomeLocation();
+        }
+        else{
+            $this->view->showHomeLocation();
+        }
     }
     
     function deleteCategoria(){

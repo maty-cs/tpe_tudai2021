@@ -135,26 +135,36 @@
         }
 
         function obtenerComentario($params = null){
-            $id = $params[':ID'];
-            $comentario = $this->model->getComentario($id);
-            if($comentario){
-                return $this->view->response($comentario, 200);
+            if(isset($params[':ID'])){
+                $id = $params[':ID'];
+                $comentario = $this->model->getComentario($id);
+                if($comentario){
+                    return $this->view->response($comentario, 200);
+                }
+                else{
+                    return $this->view->response(null, 404);
+                }
             }
             else{
-                return $this->view->response(null, 404);
+                return $this->view->response(null, 400);
             }
         }
 
         function eliminarComentario($params = null){
-            $id = $params[':ID'];
-            $comentario = $this->model->getComentario($id);
-            $this->model->deleteComentario($id);
-            if($comentario != null && $comentario != ""){
-                return $this->view->response("comentario borrado correctamente", 200);
+            if(isset($params[':ID'])){
+                $id = $params[':ID'];
+                $comentario = $this->model->getComentario($id);
+                $this->model->deleteComentario($id);
+                if($comentario != null && $comentario != ""){
+                    return $this->view->response("comentario borrado correctamente", 200);
+                }
+                else{
+                    return $this->view->response(null, 404);
+                }        
             }
             else{
-                return $this->view->response(null, 404);
-            }        
+                return $this->view->response(null, 400); 
+            }
         }
 
         function crearComentario($params = null){
