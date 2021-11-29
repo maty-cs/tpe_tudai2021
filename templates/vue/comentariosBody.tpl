@@ -36,7 +36,7 @@
                     <option value="ASC">Ascendente</option>
                     <option value="DESC">Descendiente</option>
                 </select>
-                <button type="submit" class="btn-comment" id="btnFilter">ordenar</button>
+                <button type="submit" class="btn-comment" id="btnFilter">Ordenar</button>
             </form>
             <form class="seccionFiltro">
                 <label for="categorias">Filtrar por Puntaje</label>
@@ -182,29 +182,29 @@
     {else}   
         {literal}
     </div>
-        <section class="conteinerFilter">
-
-            <form class="seccionFiltro">
-                <label for="categorias">Ordenar por Puntaje</label>
-                <select name="orden" id="order" class="filtro">
-                    <option value="none">---</option>
-                    <option value="ASC">Ascendente</option>
-                    <option value="DESC">Descendiente</option>
-                </select>
-                <button type="submit" class="btn-comment" id="btnFilter">ordenar</button>
-            </form>
-
-            <form class="seccionFiltro">
-                <label for="categorias">Filtrar por Puntaje</label>
+    <section class="conteinerFilter">
+        <form class="seccionFiltro">
+            <label for="categorias">Ordenar por Puntaje</label>
+            <select name="orden" id="order" class="filtro">
+                <option value="none">---</option>
+                <option value="ASC">Ascendente</option>
+                <option value="DESC">Descendiente</option>
+            </select>
+            <button type="submit" class="btn-comment" id="btnFilter">Ordenar</button>
+        </form>
+        <form class="seccionFiltro">
+            <label for="categorias">Filtrar por Puntaje</label>
+            {/literal}
                 <select name="points" id="points" class="filtro">
                     <option value="none">---</option>
                     {for $i = 0 to 5}
                         <option value="{$i}">{$i}</option> 
                     {/for}
                 </select>
-                <button type="submit" class="btn-comment" id="btnPoints">Filtrar</button>
-            </form>
-        </section>
+            {literal}
+            <button type="submit" class="btn-comment" id="btnPoints">Filtrar</button>
+        </form>
+    </section>
 
         <div class="bodyComentario">
             <ul>    

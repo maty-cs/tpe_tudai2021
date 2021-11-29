@@ -26,13 +26,13 @@ class sessionController {
             $this->model->insertUser($email, $password);
 
             $user = $this->model->getUser($email);
-            if ($user && password_verify($password, $user->clave)) {
-
+            if($user && password_verify($password, $user->clave)){
                 session_start();
                 $_SESSION["email"] = $email;
                 
                 $this->view->showHome();
-            } else {
+            }
+            else{
                 $this->view->showLogin("Error de verificación, pruebe de nuevo.");
             }
         }
@@ -55,13 +55,14 @@ class sessionController {
      
             $user = $this->model->getUser($email);
      
-            if ($user && password_verify($password, $user->clave)) {
+            if($user && password_verify($password, $user->clave)){
 
                 session_start();
                 $_SESSION["email"] = $email;
                 
                 $this->view->showHome();
-            } else {
+            } 
+            else{
                 $this->view->showLogin("Error de verificación, pruebe de nuevo.");
             }
         }
